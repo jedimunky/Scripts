@@ -1,0 +1,24 @@
+load from e:\exports\edw\save\APPPARMS.ixf of ixf messages e:\exports\edw\save\APPPARMS_loadmsg.txt  
+  tempfiles path e:\exports\edw\save\ 
+    replace into GZD.APPPARMS nonrecoverable INDEXING MODE AUTOSELECT;
+--
+load from e:\exports\edw\save\SUBS_SET.ixf of ixf messages e:\exports\edw\save\SUBS_SET_loadmsg.txt  
+  tempfiles path e:\exports\edw\save\ 
+    replace into GZD.SUBS_SET nonrecoverable INDEXING MODE AUTOSELECT;
+--
+load from e:\exports\edw\save\SUBS_MEMBR.ixf of ixf messages e:\exports\edw\save\SUBS_MEMBR_loadmsg.txt  
+  tempfiles path e:\exports\edw\save\ 
+    replace into GZD.SUBS_MEMBR nonrecoverable INDEXING MODE AUTOSELECT;
+--
+load from e:\exports\edw\save\SUBS_COLS.ixf of ixf messages e:\exports\edw\save\SUBS_COLS_loadmsg.txt  
+  tempfiles path e:\exports\edw\save\ 
+    replace into GZD.SUBS_COLS nonrecoverable INDEXING MODE AUTOSELECT;
+--
+load from e:\exports\edw\save\SUBS_EVENT.ixf of ixf messages e:\exports\edw\save\SUBS_EVENT_loadmsg.txt  
+  tempfiles path e:\exports\edw\save\ 
+    replace into GZD.SUBS_EVENT nonrecoverable INDEXING MODE AUTOSELECT;
+--
+load from e:\exports\edw\save\SUBS_STMTS.ixf of ixf messages e:\exports\edw\save\SUBS_STMTS_loadmsg.txt  
+  tempfiles path e:\exports\edw\save\ 
+    replace into GZD.SUBS_STMTS nonrecoverable INDEXING MODE AUTOSELECT;
+--

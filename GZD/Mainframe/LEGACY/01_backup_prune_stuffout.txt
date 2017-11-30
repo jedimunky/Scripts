@@ -1,0 +1,10 @@
+EXPORT TO e:\exports\prune_stuff\legacy\pruncntl.ixf of ixf messages e:\exports\prune_stuff\legacy\pruncntl_msg.txt SELECT * FROM asn.ibmsnap_pruncntl
+
+Number of rows exported: 1287
+
+
+EXPORT TO e:\exports\prune_stuff\legacy\prune_set.ixf of ixf messages e:\exports\prune_stuff\legacy\prune_set_msg.txt SELECT * FROM asn.ibmsnap_prune_set
+
+Number of rows exported: 1283
+
+

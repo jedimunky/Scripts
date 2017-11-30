@@ -1,0 +1,41 @@
+--
+update  asn.ibmsnap_subs_set  
+set apply_qual = replace(apply_qual, 'MRMPROD', 'MRMEDWP'),
+    set_name =   replace(set_name, 'MRMPROD', 'MRMEDWP'),
+    event_name = replace(event_name, 'MRMPROD', 'MRMEDWP'),
+    target_server = 'DB_EDWLP',
+   target_alias = 'DB_EDWLP',
+   SET SLEEP_MINUTES = 20, 
+   EVENT_NAME = NULL , 
+   REFRESH_TYPE = 'R' 
+where apply_qual like 'MRM%';
+--
+update  asn.ibmsnap_subs_membr  
+set apply_qual = replace(apply_qual, 'MRMPROD', 'MRMEDWP'),
+    set_name =   replace(set_name, 'MRMPROD', 'MRMEDWP')
+where apply_qual like 'MRM%';
+--
+update  asn.ibmsnap_subs_cols  
+set apply_qual = replace(apply_qual, 'MRMPROD', 'MRMEDWP'),
+    set_name =   replace(set_name, 'MRMPROD', 'MRMEDWP')
+where apply_qual like 'MRM%';
+--
+update  asn.ibmsnap_subs_stmts  
+set apply_qual = replace(apply_qual, 'MRMPROD', 'MRMEDWP'),
+    set_name =   replace(set_name, 'MRMPROD', 'MRMEDWP')
+where apply_qual like 'MRM%';
+--
+--update  asn.ibmsnap_subs_event  
+--set event_name = replace(event_name, 'MRMPROD', 'MRMEDWP')
+--where event_name like 'MRM%';
+--WHERE APPLY_QUAL LIKE 'HI%';
+--
+update  asn.ibmsnap_appparms  
+set apply_qual = replace(apply_qual, 'MRMPROD', 'MRMEDWP'),
+    apply_path =   'E:\APPLY_02'
+where apply_qual like 'MRM%';
+--
+update  asn.apply_start  
+set apply_qual = replace(apply_qual, 'MRMPROD', 'MRMEDWP')
+where apply_qual like 'MRM%';
+--

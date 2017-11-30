@@ -1,0 +1,6 @@
+insert into asn.ibmsnap_pruncntl  select * from gzd.pruncntl
+DB20000I  The SQL command completed successfully.
+
+insert into asn.ibmsnap_prune_set select * from gzd.prune_set
+DB20000I  The SQL command completed successfully.
+

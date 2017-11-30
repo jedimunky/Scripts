@@ -1,0 +1,83 @@
+-- Step 1 Export from Prod server
+EXPORT TO e:\exports\edw\save\appparms.ixf   of ixf messages e:\exports\edw\save\appparms_msg.txt    SELECT * FROM asn.ibmsnap_appparms  ;
+EXPORT TO e:\exports\edw\save\subs_set.ixf   of ixf messages e:\exports\edw\save\subs_set_msg.txt    SELECT * FROM asn.ibmsnap_subs_set  ;
+EXPORT TO e:\exports\edw\save\subs_membr.ixf of ixf messages e:\exports\edw\save\subs_membr_msg.txt  SELECT * FROM asn.ibmsnap_subs_membr;
+EXPORT TO e:\exports\edw\save\subs_cols.ixf  of ixf messages e:\exports\edw\save\subs_cols_msg.txt   SELECT * FROM asn.ibmsnap_subs_cols ;
+EXPORT TO e:\exports\edw\save\subs_event.ixf of ixf messages e:\exports\edw\save\subs_event_msg.txt  SELECT * FROM asn.ibmsnap_subs_event;
+EXPORT TO e:\exports\edw\save\subs_stmts.ixf of ixf messages e:\exports\edw\save\subs_stmtss_msg.txt SELECT * FROM asn.ibmsnap_subs_stmts;
+
+-- Step 2 Create P1K tables in release
+drop table p1k.appparms  ;
+drop table p1k.subs_set  ;
+drop table p1k.subs_membr;
+drop table p1k.subs_cols ;
+drop table p1k.subs_event;
+drop table p1k.subs_stmts;
+--
+create table p1k.appparms   like asn.ibmsnap_appparms   in userspace1;
+create table p1k.subs_set   like asn.ibmsnap_subs_set   in userspace1;
+create table p1k.subs_membr like asn.ibmsnap_subs_membr in userspace1;
+create table p1k.subs_cols  like asn.ibmsnap_subs_cols  in userspace1;
+create table p1k.subs_event like asn.ibmsnap_subs_event in userspace1;
+create table p1k.subs_stmts like asn.ibmsnap_subs_stmts in userspace1;
+
+-- Step 3 Import to P1K
+load from e:\exports\edw\save\APPPARMS.ixf   of ixf messages e:\exports\edw\save\APPPARMS_loadmsg.txt   tempfiles path e:\exports\edw\save\ replace into p1k.APPPARMS   nonrecoverable INDEXING MODE AUTOSELECT;
+load from e:\exports\edw\save\SUBS_SET.ixf   of ixf messages e:\exports\edw\save\SUBS_SET_loadmsg.txt   tempfiles path e:\exports\edw\save\ replace into p1k.SUBS_SET   nonrecoverable INDEXING MODE AUTOSELECT;
+load from e:\exports\edw\save\SUBS_MEMBR.ixf of ixf messages e:\exports\edw\save\SUBS_MEMBR_loadmsg.txt tempfiles path e:\exports\edw\save\ replace into p1k.SUBS_MEMBR nonrecoverable INDEXING MODE AUTOSELECT;
+load from e:\exports\edw\save\SUBS_COLS.ixf  of ixf messages e:\exports\edw\save\SUBS_COLS_loadmsg.txt  tempfiles path e:\exports\edw\save\ replace into p1k.SUBS_COLS  nonrecoverable INDEXING MODE AUTOSELECT;
+load from e:\exports\edw\save\SUBS_EVENT.ixf of ixf messages e:\exports\edw\save\SUBS_EVENT_loadmsg.txt tempfiles path e:\exports\edw\save\ replace into p1k.SUBS_EVENT nonrecoverable INDEXING MODE AUTOSELECT;
+load from e:\exports\edw\save\SUBS_STMTS.ixf of ixf messages e:\exports\edw\save\SUBS_STMTS_loadmsg.txt tempfiles path e:\exports\edw\save\ replace into p1k.SUBS_STMTS nonrecoverable INDEXING MODE AUTOSELECT;
+
+-- Step 4 Update P1K tables
+update p1k.appparms  
+   set apply_qual = replace(apply_qual, 'HIEDWP', 'HIEDWT'),
+       apply_path = 'E:\APPLY_02'
+where  apply_qual like 'HI%';
+--
+update p1k.subs_cols  
+   set apply_qual = replace(apply_qual, 'HIEDWP', 'HIEDWT'),
+       set_name   = replace(set_name  , 'HIEDWP', 'HIEDWT')
+where  apply_qual like 'HI%';
+--
+update p1k.subs_event  
+   set event_name = replace(event_name, 'HIEDWP', 'HIEDWT')
+where  event_name like 'HI%';
+--
+update p1k.subs_membr  
+   set apply_qual   = replace(apply_qual, 'HIEDWP', 'HIEDWT'),
+       set_name     = replace(set_name  , 'HIEDWP', 'HIEDWT'),
+	   source_owner = 'TESTD'
+where apply_qual like 'HI%';
+--
+update p1k.ibmsnap_subs_set  
+   set apply_qual        = replace(apply_qual, 'HIEDWP', 'HIEDWT'),
+       set_name          = replace(set_name  , 'HIEDWP', 'HIEDWT'),
+       source_server     = 'HBFTDB2',
+       source_alias      = 'HBFTDB2',
+       target_server     = 'DB_EDWLR',
+       target_alias      = 'DB_EDWLR',
+       SET SLEEP_MINUTES = 20, 
+       EVENT_NAME        = NULL , 
+       REFRESH_TYPE      = 'R'
+where  apply_qual like 'HI%';
+--
+update p1k.ibmsnap_subs_stmts  
+   set apply_qual = replace(apply_qual, 'HIEDWP', 'HIEDWT'),
+       set_name   = replace(set_name  , 'HIEDWP', 'HIEDWT')
+where  apply_qual like 'HI%';
+
+-- Step 5 Copy to ASN in release
+delete from asn.ibmsnap_appparms  ;
+delete from asn.ibmsnap_subs_set  ;
+delete from asn.ibmsnap_subs_membr;
+delete from asn.ibmsnap_subs_cols ;
+delete from asn.ibmsnap_subs_event;
+delete from asn.ibmsnap_subs_stmts;
+--
+insert into asn.ibmsnap_appparms   select * from p1k.appparms  ;
+insert into asn.ibmsnap_subs_set   select * from p1k.subs_set  ;
+insert into asn.ibmsnap_subs_membr select * from p1k.subs_membr;
+insert into asn.ibmsnap_subs_cols  select * from p1k.subs_cols ;
+insert into asn.ibmsnap_subs_event select * from p1k.subs_event;
+insert into asn.ibmsnap_subs_stmts select * from p1k.subs_stmts;

@@ -1,0 +1,18 @@
+drop table gzd.pruncntl;
+drop table gzd.prune_set;
+--
+create table gzd.pruncntl  like asn.ibmsnap_pruncntl  in userspace1;
+create table gzd.prune_set like asn.ibmsnap_prune_set in userspace1;
+--
+drop sequence gzd.mapid;
+--
+create sequence gzd.mapid;
+--
+SELECT                                                         
+ COALESCE ( CHAR(MAX(INT(MAP_ID)+1) ), '0' )                   
+ FROM ASN.IBMSNAP_PRUNCNTL;                                     
+--                                                                
+ALTER SEQUENCE GZD.MAPID RESTART WITH 239 ;   
+--
+
+

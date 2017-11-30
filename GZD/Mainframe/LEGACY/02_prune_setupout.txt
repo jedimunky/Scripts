@@ -1,0 +1,30 @@
+drop table gzd.legacy_pruncntl
+DB20000I  The SQL command completed successfully.
+
+drop table gzd.legacy_prune_set
+DB20000I  The SQL command completed successfully.
+
+create table gzd.legacy_pruncntl  like asn.ibmsnap_pruncntl  in database dsndb04
+DB20000I  The SQL command completed successfully.
+
+create table gzd.legacy_prune_set like asn.ibmsnap_prune_set in database dsndb04
+DB20000I  The SQL command completed successfully.
+
+drop sequence gzd.mapid
+DB20000I  The SQL command completed successfully.
+
+create sequence gzd.mapid
+DB20000I  The SQL command completed successfully.
+
+SELECT COALESCE ( CHAR(MAX(INT(MAP_ID)+1) ), '0' ) FROM ASN.IBMSNAP_pruncntl
+
+           
+-----------
+2288       
+
+  1 record(s) selected.
+
+
+ALTER SEQUENCE GZD.MAPID RESTART WITH 2288
+DB20000I  The SQL command completed successfully.
+

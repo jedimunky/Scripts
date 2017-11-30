@@ -1,0 +1,17 @@
+drop table gzd.edw_pruncntl;
+drop table gzd.edw_prune_set;
+--
+create table gzd.edw_pruncntl  like asn.ibmsnap_pruncntl  in database dsndb04;
+create table gzd.edw_prune_set like asn.ibmsnap_prune_set in database dsndb04;
+--
+drop sequence gzd.mapid;
+--
+create sequence gzd.mapid;
+--
+SELECT                                                         
+  COALESCE ( CHAR(MAX(INT(MAP_ID)+1) ), '0' )    
+--FROM gzd.legacy_pruncntl;                
+ FROM ASN.IBMSNAP_PRUNCNTL;                                     
+--                                                                
+--ALTER SEQUENCE GZD.MAPID RESTART WITH 2742;   
+--

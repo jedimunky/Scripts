@@ -1,0 +1,10 @@
+SQL3104N  The Export utility is beginning to export data to file 
+"e:\exports\prune_stuff\siebel\prune_set.ixf".
+
+SQL3105N  The Export utility has finished exporting "67" rows.
+
+SQL3104N  The Export utility is beginning to export data to file 
+"E:\EXPORTS\PRUNE_STUFF\SIEBEL\prune_set.ixf".
+
+SQL3105N  The Export utility has finished exporting "172" rows.
+

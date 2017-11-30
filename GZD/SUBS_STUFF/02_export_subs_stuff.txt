@@ -1,0 +1,18 @@
+EXPORT TO e:\exports\edw\save\appparms.ixf of ixf messages e:\exports\edw\save\appparms_msg.txt 
+  SELECT * FROM asn.ibmsnap_appparms;
+--
+EXPORT TO e:\exports\edw\save\subs_set.ixf of ixf messages e:\exports\edw\save\subs_set_msg.txt 
+  SELECT * FROM asn.ibmsnap_subs_set;
+--
+EXPORT TO e:\exports\edw\save\subs_membr.ixf of ixf messages e:\exports\edw\save\subs_membr_msg.txt 
+  SELECT * FROM asn.ibmsnap_subs_membr;
+--
+EXPORT TO e:\exports\edw\save\subs_cols.ixf of ixf messages e:\exports\edw\save\subs_cols_msg.txt 
+  SELECT * FROM asn.ibmsnap_subs_cols;
+--
+EXPORT TO e:\exports\edw\save\subs_event.ixf of ixf messages e:\exports\edw\save\subs_event_msg.txt 
+  SELECT * FROM asn.ibmsnap_subs_event;
+--
+EXPORT TO e:\exports\edw\save\subs_stmts.ixf of ixf messages e:\exports\edw\save\subs_stmtss_msg.txt 
+  SELECT * FROM asn.ibmsnap_subs_stmts;
+--

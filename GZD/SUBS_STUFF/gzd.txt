@@ -1,0 +1,6 @@
+delete from asn.ibmsnap_subs_event;
+delete from asn.ibmsnap_subs_stmts;
+--
+insert into asn.ibmsnap_subs_event select * from gzd.subs_event;
+insert into asn.ibmsnap_subs_stmts select * from gzd.subs_stmts;
+--

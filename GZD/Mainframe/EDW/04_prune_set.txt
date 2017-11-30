@@ -1,0 +1,18 @@
+--
+insert into gzd.edw_prune_set (
+TARGET_SERVER  ,               
+APPLY_QUAL ,                   
+SET_NAME ,                     
+SYNCHTIME ,                    
+SYNCHPOINT
+)
+SELECT      
+ 'DB_EDWLD',                                         
+ replace(apply_qual, 'PROD', 'EDWD'),
+ replace(set_name, 'PROD', 'EDWD'),
+ SYNCHTIME ,                    
+ SYNCHPOINT       
+from asn.ibmsnap_prune_set                          
+ WHERE TARGET_SERVER = 'DB_MISLP'                                
+ ;  
+--

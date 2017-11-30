@@ -1,0 +1,4 @@
+insert into asn.ibmsnap_pruncntl  select * from GZD.EDW_PRUNCNTL;
+--
+insert into asn.ibmsnap_prune_set select * from gzd.edw_prune_set;
+--

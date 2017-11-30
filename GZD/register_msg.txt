@@ -1,0 +1,5 @@
+SQL3104N  The Export utility is beginning to export data to file 
+"E:\EXPORTS\PRUNE_STUFF\SIEBEL\register.ixf".
+
+SQL3105N  The Export utility has finished exporting "45" rows.
+

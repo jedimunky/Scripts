@@ -1,0 +1,6 @@
+EXPORT TO e:\exports\prune_stuff\legacy\pruncntl.ixf of ixf messages e:\exports\prune_stuff\legacy\pruncntl_msg.txt 
+  SELECT * FROM asn.ibmsnap_pruncntl;
+--
+EXPORT TO e:\exports\prune_stuff\legacy\prune_set.ixf of ixf messages e:\exports\prune_stuff\legacy\prune_set_msg.txt 
+  SELECT * FROM asn.ibmsnap_prune_set;
+--

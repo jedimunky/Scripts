@@ -1,0 +1,20 @@
+SELECT COUNT(*)
+  FROM SIEBELDBA.S_SRM_ACTION;
+SELECT COUNT(*)
+  FROM SIEBELDBA.S_SRM_REQUEST;
+SELECT COUNT(*)
+  FROM SIEBELDBA.S_USER;
+--
+--delete from SIEBELDBA.S_SRM_DATA
+select count(*) from SIEBELDBA.S_SRM_DATA
+--where date(created) <= '30-06-2014'
+--and
+where
+ PAR_ID in 
+( select ROW_ID 
+    from SIEBELDBA.S_SRM_REQUEST 
+      where STATUS in ('COMPLETE', 'SUCCESS', 'ERROR','EXPIRED', 'CANCELED') );
+
+--delete from SIEBELDBA.S_SRM_REQUEST 
+select count(*) from SIEBELDBA.S_SRM_REQUEST 
+where STATUS in ('COMPLETE', 'SUCCESS', 'ERROR','EXPIRED', 'CANCELED');

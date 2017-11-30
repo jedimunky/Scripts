@@ -1,0 +1,13 @@
+drop table gzd.appparms;
+drop table gzd.subs_set;
+drop table gzd.subs_membr;
+drop table gzd.subs_cols;
+drop table gzd.subs_event;
+drop table gzd.subs_stmts;
+--
+create table gzd.appparms   like asn.ibmsnap_appparms   in userspace1;
+create table gzd.subs_set   like asn.ibmsnap_subs_set   in userspace1;
+create table gzd.subs_membr like asn.ibmsnap_subs_membr in userspace1;
+create table gzd.subs_cols  like asn.ibmsnap_subs_cols  in userspace1;
+create table gzd.subs_event like asn.ibmsnap_subs_event in userspace1;
+create table gzd.subs_stmts like asn.ibmsnap_subs_stmts in userspace1;

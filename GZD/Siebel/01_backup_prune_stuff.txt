@@ -1,0 +1,6 @@
+EXPORT TO e:\exports\prune_stuff\siebel\pruncntl.ixf of ixf messages e:\exports\prune_stuff\siebel\pruncntl_msg.txt 
+  SELECT * FROM asn.ibmsnap_pruncntl;
+--
+EXPORT TO e:\exports\prune_stuff\siebel\prune_set.ixf of ixf messages e:\exports\prune_stuff\siebel\prune_set_msg.txt 
+  SELECT * FROM asn.ibmsnap_prune_set;
+--

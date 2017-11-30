@@ -1,0 +1,41 @@
+--
+update  asn.ibmsnap_subs_set  
+set apply_qual = replace(apply_qual, 'HIPROD', 'HIEDWP'),
+    set_name =   replace(set_name, 'HIPROD', 'HIEDWP'),
+    event_name = replace(event_name, 'HIPROD', 'HIEDWP'),
+    target_server = 'DB_EDWLP',
+   target_alias = 'DB_EDWLP',
+   SET SLEEP_MINUTES = 20, 
+   EVENT_NAME = NULL , 
+   REFRESH_TYPE = 'R'
+where apply_qual like 'HI%';
+--
+update  asn.ibmsnap_subs_membr  
+set apply_qual = replace(apply_qual, 'HIPROD', 'HIEDWP'),
+    set_name =   replace(set_name, 'HIPROD', 'HIEDWP')
+where apply_qual like 'HI%';
+--
+update  asn.ibmsnap_subs_cols  
+set apply_qual = replace(apply_qual, 'HIPROD', 'HIEDWP'),
+    set_name =   replace(set_name, 'HIPROD', 'HIEDWP')
+where apply_qual like 'HI%';
+--
+update  asn.ibmsnap_subs_stmts  
+set apply_qual = replace(apply_qual, 'HIPROD', 'HIEDWP'),
+    set_name =   replace(set_name, 'HIPROD', 'HIEDWP')
+where apply_qual like 'HI%';
+--
+--update  asn.ibmsnap_subs_event  
+--set event_name = replace(event_name, 'HIPROD', 'HIEDWP')
+--where event_name like 'HI%';
+--WHERE APPLY_QUAL LIKE 'HI%';
+--
+update  asn.ibmsnap_appparms  
+set apply_qual = replace(apply_qual, 'HIPROD', 'HIEDWP'),
+    apply_path =   'E:\APPLY_02'
+where apply_qual like 'HI%';
+--
+update  asn.apply_start  
+set apply_qual = replace(apply_qual, 'HIPROD', 'HIEDWP')
+where apply_qual like 'HI%';
+--

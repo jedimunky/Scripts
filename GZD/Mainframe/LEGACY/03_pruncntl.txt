@@ -1,0 +1,41 @@
+--
+INSERT INTO GZD.LEGACY_PRUNCNTL (                                       
+TARGET_SERVER,                 
+TARGET_OWNER ,                 
+TARGET_TABLE  ,                
+SYNCHTIME,                    
+SYNCHPOINT ,                   
+SOURCE_OWNER  ,                
+SOURCE_TABLE,                  
+SOURCE_VIEW_QUAL ,             
+APPLY_QUAL ,                   
+SET_NAME  ,                    
+CNTL_SERVER ,                  
+TARGET_STRUCTURE  ,            
+CNTL_ALIAS,                    
+PHYS_CHANGE_OWNER ,            
+PHYS_CHANGE_TABLE ,            
+MAP_ID                            
+ )                                                               
+SELECT      
+ 'DB_INFOX',  TARGET_OWNER, TARGET_TABLE, 
+ SYNCHTIME, SYNCHPOINT,     
+ SOURCE_OWNER, SOURCE_TABLE, SOURCE_VIEW_QUAL,                                        
+ replace(apply_qual, 'INFOA', 'INFOX'),
+ replace(set_name, 'INFOA', 'INFOX') ,                                  
+ 'DB_INFOX',                                                     
+ TARGET_STRUCTURE,  
+ 'DB_INFOX', 
+PHYS_CHANGE_OWNER ,            
+PHYS_CHANGE_TABLE ,                                             
+ CHAR(NEXT VALUE FOR GZD.MAPID)                       
+ FROM ASN.IBMSNAP_PRUNCNTL                                       
+ WHERE TARGET_SERVER = 'DB_INFO'     
+   AND TARGET_TABLE NOT IN ('TW048_NEXTPLANCODE', 'EPRIAP4', 'EPRIDTL') 
+   AND APPLY_QUAL NOT IN   ('INFOAQUAL40', 'INFOAQUAL50')
+;  
+--
+
+                                                             
+
+

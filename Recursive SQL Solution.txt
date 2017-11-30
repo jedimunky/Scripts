@@ -1,0 +1,61 @@
+Turn this:
+HPOLICY    SERVICE_CODE
+---------+---------+---
+H00007055  APP         
+H00007055  CHI         
+H00007055  GDL         
+H00007055  HLP         
+H00007055  MDL         
+H00007055  NAT         
+H00007055  OPT         
+H00007055  OST         
+H00007055  PHY         
+H00007055  POD 
+        
+H00015504  CHI         
+H00015504  GDL         
+H00015504  MDL         
+H00015504  NAT         
+H00015504  OCT         
+H00015504  OPT         
+H00015504  PHY         
+H00015504  POD         
+H00015504  REM         
+H00015504  UAM 
+
+Into this:
+HPOLICY    SERVICE_CODES                                            
+---------+---------+---------+---------+---------+--
+H00007055  APP,CHI,GDL,HLP,MDL,NAT,OPT,OST,PHY,POD, 
+H00015504  CHI,GDL,MDL,NAT,OCT,OPT,PHY,POD,REM,UAM, 
+
+WITH                                                                    
+   -- ALLOCATE ASCENDING ROW NUMBERS PER HPOLICY                        
+   X(HPOLICY, SERVICE_CODE, ROWNUM) AS (                                
+     SELECT HPOLICY, SERVICE_CODE,                                      
+            ROW_NUMBER() OVER (PARTITION BY HPOLICY)                    
+     FROM   INFOA.TH336_SERVICE_SELN                          
+    ),                                                                  
+                                                                        
+   -- THIS IS THE RECURSIVE BIT                                         
+   Y(HPOLICY, STRING, COUNT, COUNTMAX) AS (                             
+      -- GET THE FIRST ROW FOR EACH POLICY (TO INITIALIZE THE TABLE)    
+      SELECT HPOLICY, VARCHAR('', 1000), 0, MAX(ROWNUM)                 
+      FROM X                                                            
+      GROUP BY HPOLICY                                                  
+                                                                        
+      -- CONCATENATE THE SERVICE_CODE ONTO THE STRING                   
+      UNION ALL                                                         
+      SELECT Y.HPOLICY, Y.STRING || RTRIM(CHAR(X.SERVICE_CODE)) || ',', 
+             Y.COUNT + 1, Y.COUNTMAX                                    
+      FROM   X, Y                                                       
+      WHERE  X.HPOLICY = Y.HPOLICY                                      
+      AND    X.ROWNUM = Y.COUNT + 1                                     
+      AND    Y.COUNT < Y.COUNTMAX                                       
+    ) 
+
+-- NOW SELECT THE LAST ROW FOR EACH POLICY (LAST ROW HAS ALL THE VALUES) 
+SELECT HPOLICY, STRING
+FROM   Y
+WHERE Y.COUNT = Y.COUNTMAX
+;

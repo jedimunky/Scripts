@@ -1,0 +1,15 @@
+--
+delete from asn.ibmsnap_appparms;
+delete from asn.ibmsnap_subs_set;
+delete from asn.ibmsnap_subs_membr;
+delete from asn.ibmsnap_subs_cols;
+delete from asn.ibmsnap_subs_event;
+delete from asn.ibmsnap_subs_stmts;
+--
+insert into asn.ibmsnap_appparms   select * from gzd.appparms;
+insert into asn.ibmsnap_subs_set   select * from gzd.subs_set;
+insert into asn.ibmsnap_subs_membr select * from gzd.subs_membr;
+insert into asn.ibmsnap_subs_cols  select * from gzd.subs_cols;
+insert into asn.ibmsnap_subs_event select * from gzd.subs_event;
+insert into asn.ibmsnap_subs_stmts select * from gzd.subs_stmts;
+--

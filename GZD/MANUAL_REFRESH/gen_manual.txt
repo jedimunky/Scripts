@@ -1,0 +1,9 @@
+select 'INSERT INTO ASN.IBMSNAP_SIGNAL'||
+       ' (SIGNAL_TIME, SIGNAL_TYPE, SIGNAL_SUBTYPE, SIGNAL_INPUT_IN, SIGNAL_STATE) '||
+       ' VALUES (CURRENT TIMESTAMP + '|| 
+        char(next value for gzd.next_seq)||' MICROSECONDS '|| 
+       ', ''CMD'', ''CAPSTART'', '||''''|| 
+       rtrim(map_id)||''','||'''P'''||');'
+from asn.ibmsnap_pruncntl
+where source_owner = 'SIEBELDBA';
+--- whatever sql you need to affect the subscriptions ya want

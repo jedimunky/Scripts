@@ -1,0 +1,20 @@
+--
+insert into gzd.legacy_prune_set (
+TARGET_SERVER  ,               
+APPLY_QUAL ,                   
+SET_NAME ,                     
+SYNCHTIME ,                    
+SYNCHPOINT
+)
+SELECT      
+ 'DB_INFOX',                                         
+ replace(apply_qual, 'INFOA', 'INFOX'),
+ replace(set_name, 'INFOA', 'INFOX'),
+ SYNCHTIME ,                    
+ SYNCHPOINT       
+from asn.ibmsnap_prune_set                          
+ WHERE TARGET_SERVER = 'DB_INFO'   
+   AND APPLY_QUAL NOT IN   ('INFOAQUAL40', 'INFOAQUAL50')                             
+ ;  
+--
+

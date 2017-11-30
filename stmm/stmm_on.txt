@@ -1,0 +1,9 @@
+get    db cfg show detail ;
+update db cfg using self_tuning_mem on ;
+update db cfg using database_memory automatic ;
+update db cfg using locklist        automatic ;
+update db cfg using maxlocks        automatic ;
+update db cfg using pckcachesz      automatic ;
+update db cfg using sheapthres_shr  automatic ;
+update db cfg using sortheap        automatic ;
+get    db cfg show detail ;
