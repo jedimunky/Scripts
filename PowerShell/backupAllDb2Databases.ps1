@@ -6,49 +6,58 @@ Set-Location D:\scripts\Db2
 $dblist = .\listAllDb2Databases.ps1
 
 # Set up reports
-$dirpath = "D:\scripts\db2\reports\"
+$dirpath = "D:\scripts\db2\reports"
 $oldpath = "$dirpath\Old"
 if (!(Test-Path $oldpath)) {
 	New-Item -ItemType Directory -Path $oldpath
-}
+} # end if
 
 $fileList = Get-ChildItem -Path $dirpath -Filter *backup.out -Name
 foreach($item in $fileList) {
 	Move-Item -Path $dirpath\$item -Destination $oldpath -force
-}
+} # end for loop
+
+# Set-up backup command variables
+$action   = "ONLINE"
+$nblib    = "`'D:\Program Files\VERITAS\NetBackup\bin\nbdb2.dll`'"
+$sessions = "OPEN 2 SESSIONS WITH 4 BUFFERS BUFFER 1024"
 
 # Kick off backups
 $backupstart = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
 foreach ($item in $dblist) {
-    set-item -path env:DB2CLP -value $item.SQLLibCopyBin
-    set-item -path env:DB2INSTANCE -value $item.Instance
-    Start-Process -FilePath "D:\scripts\db2\db2_backup_db_online.cmd" -ArgumentList $item.SQLLibCopyBin, $item.Database, $item.Instance
+    $SQLLibCopyBin = $item.SQLLibCopyBin
+	$Instance      = $item.Instance
+	$dbname        = $item.Database
+	$cmdline       = "BACKUP DATABASE $dbname $action LOAD $nblib $sessions"
+	set-item -path env:DB2CLP      -value $SQLLibCopyBin
+    set-item -path env:DB2INSTANCE -value $Instance
+	Set-Location $SQLLibCopyBin
+	Start-Process -FilePath "$SQLLibCopyBin\db2.exe" -ArgumentList $cmdline -RedirectStandardOutput "D:\scripts\db2\reports\$Instance.$dbname`_backup.out" -NoNewWindow
     Start-Sleep -Seconds 10
-}
+} # end for loop
 
 # Wait for all backups to complete
 foreach ($item in $dblist) {
-    set-item -path env:DB2CLP -value $item.SQLLibCopyBin
-    set-item -path env:DB2INSTANCE -value $item.Instance
-	$bin = $env:DB2CLP
-	Set-Location $bin
+    $SQLLibCopyBin = $item.SQLLibCopyBin
+	$Instance      = $item.Instance
+	set-item -path env:DB2CLP      -value $SQLLibCopyBin
+    set-item -path env:DB2INSTANCE -value $Instance
+	Set-Location $SQLLibCopyBin
     while ((.\db2.exe list utilities show detail) -notlike "*No data was returned by Database System Monitor*") {Start-Sleep -Seconds 300}
-}
+} # end for loop
 
 # Copy Archive Logs to NetBackup - *** MUST RUN AS ADMIN ***
 $dayofmonth = (Get-Date).Day
 $dayofweek  = (Get-Date).DayOfWeek
-if ($dayofmonth -le 7 -and $dayofweek -eq "Friday")
-{
+if ($dayofmonth -le 7 -and $dayofweek -eq "Friday") {
 	# Monthly schedule 14 days retention then to tape
-	$schedule = "HO_REL_USER_BACKUP_MONTHLY"
-} else 
-{
+	$schedule = "HO_DEV_USER_BACKUP_MONTHLY"
+} else {
 	# Daily schedule 14 days retention
-	$schedule = "HO_REL_USER_BACKUP_DAILY"
-}
+	$schedule = "HO_DEV_USER_BACKUP_DAILY"
+} #end if
 $logpath     = "F:\db2_archive_logs"
-$Arguments   = "-S netbackup.corp.hbf.com.au -p HO_REL_DB2_WINFS -s $schedule $logpath"
+$Arguments   = "-S netbackup.corp.hbf.com.au -p HO_DEV_DB2_WINFS -s $schedule $logpath"
 $StartBackup = "D:\Program Files\VERITAS\NetBackup\bin\bpbackup.exe"
 
 Start-Process -FilePath $StartBackup -ArgumentList $Arguments
@@ -77,7 +86,7 @@ foreach($item in $fileList) {
             $line = $line -Replace([char]12,"")
 			$Body += "$line"
 			if ($line -notlike "*Backup successful*") {
-				$ctrlM = "ERROR: $server backup failed, please investigate"
+				$ctrlM = "ERROR: $server backup failed for $item"
 			}
         }
     }

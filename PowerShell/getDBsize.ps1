@@ -21,7 +21,7 @@ foreach ($item in $dblist) {
         {$Size -ge 1GB} {$dbSize = ("{0:N2}" -f ($Size/1GB)).ToString() + " GB" ; break}
         {$Size -ge 1MB} {$dbSize = ("{0:N2}" -f ($Size/1MB)).ToString() + " MB" ; break}
         {$Size -ge 1KB} {$dbSize = ("{0:N2}" -f ($Size/1KB)).ToString() + " KB" ; break}
-        Default { $dbSize = $Size + " Bytes" }
+        Default         {$dbSize = $Size + " Bytes" }
     }
     $report += "Database $dbname is $dbSize`n"
 }
