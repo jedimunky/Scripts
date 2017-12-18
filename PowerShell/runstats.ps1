@@ -2,37 +2,40 @@
 
 Set-Location D:\scripts\Db2
 
-function mainControl () # build statements for schema
+function mainControl () # read control file
 {
-    $starttime     = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
-    $list          = Get-Content runstats.control
+    $starttime  = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
+    $runlist    = Get-Content -Path runstats.control
 
+    buildStatements $runlist
 
-
-    $endtime       = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
-    $backupelapsed = New-TimeSpan -Start $backupstart -End $backupend
+    $endtime    = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
+    $runelapsed = New-TimeSpan -Start $starttime -End $endtime
     
-    emailResults $?
+    emailResults $starttime $endtime $runelapsed
 }
 
-function buildStatements ($list) # build statements for schema
+function buildStatements ($runlist) # build statements for schema
 {
-    foreach ($line in $list) # Do something
+    foreach ($line in $runlist) # Do something
     {
         $instance = ($line.split(",")[0])
         $dbname   = ($line.split(",")[1])
         $schema   = ($line.split(",")[2])
         
+        $connect  = "connect to $dbname"
+        Start-Process -FilePath "db2.exe" -ArgumentList $connect -NoNewWindow
+    
+        
         "In the $instance instance, for $dbname database, runstat all tables in schema $schema"
     }
 }
-
 function execRunstats () # step through runstat list
 {
     
 }
 
-function emailResults () # build statements for schema
+function emailResults ($starttime, $endtime, $runelapsed) # build statements for schema
 {
     $server          = $env:COMPUTERNAME.ToLower()
     $EmailTarget     = "DBA Application Middleware <DBAApplicationMiddleware@hbf.com.au>"
@@ -44,9 +47,11 @@ function emailResults () # build statements for schema
     $Body += "Runstats for $server started at $starttime<br><br>"
     
     $Body += "<br><br>"
-    $Body += "Backup for $server ended at $backupend<br>"
-    $Body += "Total time taken for backup $backupelapsed<br>"
-    }
+    $Body += "Backup for $server ended at $endtime<br>"
+    $Body += "Total time taken for backup $runelapsed<br>"
+
+    Send-MailMessage -to $EmailTarget -from $EmailFrom -subject $EmailSubject -smtpserver $EmailSMTPServer -Body $Body -BodyAsHtml
 }
 
+mainControl 
 Set-Location D:\scripts\Db2
