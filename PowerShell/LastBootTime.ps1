@@ -4,7 +4,7 @@ Shows when your PC last started up.
 .DESCRIPTION
 This is a WMI wrapper function to get the date and time that your PC last started up.
 .PARAMETER ComputerName
-The name of the computer you want to run the command on.
+The name of the computer you want to run the command on. Default is localhost.
 .EXAMPLE
 LastBootTime -ComputerName localhost
 .LINK
@@ -12,7 +12,7 @@ http://www.howtogeek.com/141495/geek-school-writing-your-first-full-powershell-s
 #>
 
 param(
-    [string]$ComputerName
+    [string]$ComputerName = "localhost"
     )
 
 Get-WmiObject -Class Win32_OperatingSystem -ComputerName $ComputerName | 

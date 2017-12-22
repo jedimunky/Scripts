@@ -2,10 +2,10 @@ PowerShell
 ==========
 Scripts for...
 
-hadr
-runstats
-refresh
-health check
+hadr - some dbs not supposed to be hadr
+runstats - multi copy multi instance exec problem
+refresh - needs restore from bowdi
+health check - stored proc from powershell?
 
 DONE
 backup
