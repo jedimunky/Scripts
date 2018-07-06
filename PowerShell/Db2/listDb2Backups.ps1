@@ -18,9 +18,9 @@ Function GetTimestampAndSize ($RestoreItemsPart)
     $Line = New-Object PSObject -Property @{
 			"DatabaseInstance" = $RestoreInstance
             "DatabaseName" = $RestoreDBName
-            # "BackupTimeStamp" = $RestoreItemsPart.split("\")[3]
             "BackupDateTime" = $BackupDateTime
             "DatabasePartSize" = $PartSize
+            "BackupTimeStamp" = $BackupTimeStamp
         }
     Return $Line
 }
@@ -41,4 +41,4 @@ $RestoreDetails = New-Object PSObject -Property @{
 
 Set-Location $currentLocation
 
-$RestoreDetails.DatabasesAvailable | Select-Object -Property DatabaseInstance, DatabaseName, BackupDateTime -unique | Sort DatabaseInstance, DatabaseName, BackupDateTime | Format-Table -AutoSize
+$RestoreDetails.DatabasesAvailable | Select-Object -Property DatabaseInstance, DatabaseName, BackupDateTime, BackupTimeStamp -unique | Sort DatabaseInstance, DatabaseName, BackupDateTime | Format-Table -AutoSize

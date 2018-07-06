@@ -4,6 +4,7 @@
 Set-Location D:\scripts\Db2
 .\buildDb2conf.ps1
 $dblist = .\listAllDb2Databases.ps1
+$sleeptimer = 10
 
 # Set up reports
 $dirpath = "D:\scripts\db2\reports"
@@ -20,7 +21,7 @@ foreach($item in $fileList) {
 # Set-up backup command variables
 $action   = "ONLINE"
 $nblib    = "`'D:\Program Files\VERITAS\NetBackup\bin\nbdb2.dll`'"
-$sessions = "OPEN 2 SESSIONS WITH 4 BUFFERS BUFFER 1024"
+$sessions = "OPEN 2 SESSIONS DEDUP_DEVICE WITH 4 BUFFERS BUFFER 1024"
 
 # Kick off backups
 $backupstart = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
@@ -29,11 +30,19 @@ foreach ($item in $dblist) {
 	$Instance      = $item.Instance
 	$dbname        = $item.Database
 	$cmdline       = "BACKUP DATABASE $dbname $action LOAD $nblib $sessions"
-	set-item -path env:DB2CLP      -value $SQLLibCopyBin
-    set-item -path env:DB2INSTANCE -value $Instance
-	Set-Location $SQLLibCopyBin
-	Start-Process -FilePath "$SQLLibCopyBin\db2.exe" -ArgumentList $cmdline -RedirectStandardOutput "D:\scripts\db2\reports\$Instance.$dbname`_backup.out" -NoNewWindow
-    Start-Sleep -Seconds 10
+	Set-Item -path env:DB2CLP      -value $SQLLibCopyBin
+	Set-Item -path env:DB2INSTANCE -value $Instance
+
+	Start-Job  -ScriptBlock {
+		param ($SQLLibCopyBin,$Instance,$cmdline,$dbname)
+		Set-Item -path env:DB2CLP -value $SQLLibCopyBin
+		Set-Item -path env:DB2INSTANCE -value $Instance
+		Set-Location $SQLLibCopyBin
+		Start-Process -FilePath "$SQLLibCopyBin\db2.exe" -ArgumentList $cmdline -Wait -RedirectStandardOutput "D:\scripts\db2\reports\$Instance.$dbname`_backup.out" -NoNewWindow
+		exit
+	} -Name BackupDB -ArgumentList @($SQLLibCopyBin,$Instance,$cmdline,$dbname)
+	# Start-Process -FilePath "$SQLLibCopyBin\db2.exe" -ArgumentList $cmdline -RedirectStandardOutput "D:\scripts\db2\reports\$Instance.$dbname`_backup.out" -NoNewWindow
+    Start-Sleep -Seconds $sleeptimer
 } # end for loop
 
 # Wait for all backups to complete
@@ -47,27 +56,39 @@ foreach ($item in $dblist) {
 } # end for loop
 
 # Copy Archive Logs to NetBackup - *** MUST RUN AS ADMIN ***
+
 $dayofmonth = (Get-Date).Day
 $dayofweek  = (Get-Date).DayOfWeek
+
+switch ($env:COMPUTERNAME[1])
+{
+	{$env:COMPUTERNAME[1] -eq "T"} {$locale = "DEV"  ; break}
+	{$env:COMPUTERNAME[1] -eq "R"} {$locale = "REL"  ; break}
+	{$env:COMPUTERNAME[1] -eq "P"} {$locale = "PROD" ; break}
+}
+
 if ($dayofmonth -le 7 -and $dayofweek -eq "Friday") {
 	# Monthly schedule 14 days retention then to tape
-	$schedule = "HO_DEV_USER_BACKUP_MONTHLY"
+	$schedule = "HO_" + $locale + "_USER_BACKUP_MONTHLY"
 } else {
 	# Daily schedule 14 days retention
-	$schedule = "HO_DEV_USER_BACKUP_DAILY"
+	$schedule = "HO_" + $locale + "_USER_BACKUP_DAILY"
 } #end if
 $logpath     = "F:\db2_archive_logs"
-$Arguments   = "-S netbackup.corp.hbf.com.au -p HO_DEV_DB2_WINFS -s $schedule $logpath"
+$Arguments   = "-S netbackup.corp.hbf.com.au -p HO_" + $locale + "_DB2_WINFS -s $schedule $logpath"
 $StartBackup = "D:\Program Files\VERITAS\NetBackup\bin\bpbackup.exe"
 
 Start-Process -FilePath $StartBackup -ArgumentList $Arguments
+
+# Delete old backups and logs
+& D:\scripts\Db2\deleteBackupsLogs.ps1
 
 # Build email
 $server = $env:COMPUTERNAME.ToLower()
 $EmailTarget = "DBA Application Middleware <DBAApplicationMiddleware@hbf.com.au>"
 $EmailFrom = "$server <$server@hbf.com.au>"
 $EmailSubject = "$server - NetBackup Report"
-$EmailSMTPServer = "mail.corp.hbf.com.au"
+$EmailSMTPServer = "wmail.corp.hbf.com.au"
 $Body = "<HTML><HEAD><META http-equiv=""Content-Type"" content=""text/html; charset=iso-8859-1"" /><TITLE></TITLE></HEAD>"
 $Body += "<BODY bgcolor=""#FFFFFF"" style=""font-size: x-small; font-family: TAHOMA; color: #000000""><P>"
 $Body += "Backup for $server started at $backupstart<br><br>"

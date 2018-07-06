@@ -28,17 +28,35 @@ catalog db DB_EDWLR as DB_EDWLR at node DB2EDWR2;
 catalog db DB_EDWDR as DB_EDWDR at node DB2EDWR2;
 catalog db DB_EDWSR as DB_EDWSR at node DB2EDWR2;
 
+-- EDWS
+uncatalog db DB_EDWDS;
+uncatalog db DB_EDWSS;
+uncatalog db DB_EDWLS;
+uncatalog system odbc data source DB_EDWDS;
+uncatalog system odbc data source DB_EDWSS;
+uncatalog system odbc data source DB_EDWLS;
+uncatalog node DB2EDWS2;
+
+catalog tcpip node DB2EDWS2 remote HRSUDBBI1 server 50040 remote_instance DB2EDWS2 system HRSUDBBI1 ostype win;
+catalog db DB_EDWLS as DB_EDWLS at node DB2EDWS2;
+catalog db DB_EDWDS as DB_EDWDS at node DB2EDWS2;
+catalog db DB_EDWSS as DB_EDWSS at node DB2EDWS2;
+
 -- RDS
 uncatalog db DB_RDSR;
+uncatalog db DB_RDSS;
 uncatalog db DB_RDSD;
 uncatalog system odbc data source DB_RDSR;
+uncatalog system odbc data source DB_RDSS;
 uncatalog system odbc data source DB_RDSD;
 uncatalog node DB2RDSR2;
 
 catalog tcpip node DB2RDSR2 remote HRSUDBBI1 server 50036 remote_instance DB2RDS2 system HRSUDBBI1 ostype win;
 catalog db DB_RDSR as DB_RDSR at node DB2RDSR2;
+catalog db DB_RDSS as DB_RDSS at node DB2RDSR2;
 catalog db DB_RDSD as DB_RDSD at node DB2RDSR2;
 catalog system odbc data source DB_RDSR;
+catalog system odbc data source DB_RDSS;
 catalog system odbc data source DB_RDSD;
 
 -- INFOZ

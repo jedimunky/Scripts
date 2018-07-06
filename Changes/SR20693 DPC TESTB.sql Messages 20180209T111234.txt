@@ -1,0 +1,185 @@
+Statement:Friday, Feb 9, 2018 10:43:52.5505 AM 0:05:39.341: 577 rows affected
+10: UPDATE TESTB.TW108_EXTEND_WAIT EW
+SET DTE_OFF = '2018-02-21',
+    LST_UPD_USERID = 'FIX',
+    LST_UPD_TERMINAL = 'BTCH',
+    LST_UPD_TIMESTAMP = CURRENT TIMESTAMP
+WHERE EXISTS
+         (SELECT 1
+          FROM TESTB.TW108_EXTEND_WAIT A, TESTB.TW331_ITEMDEFN B
+          WHERE     A.ITEM_TYPE = EW.ITEM_TYPE
+                AND A.ITEM_CODE = EW.ITEM_CODE
+                AND A.COVER = EW.COVER
+                AND A.DTE_ON = EW.DTE_ON
+                AND A.ITEM_TYPE = B.ITEM_TYPE
+                AND A.ITEM_CODE = B.ITEM_CODE
+                AND A.DTE_OFF = '31.12.9999'
+                AND B.DTE_OFF = '31.12.9999'
+                AND A.COVER IN ('F00',
+                                'FJ0',
+                                'FK0',
+                                'K00')
+                AND B.ASSESS_GROUP IN ('100',
+                                       '314',
+                                       '101',
+                                       '321',
+                                       '104',
+                                       '102',
+                                       '103'))
+Statement:Friday, Feb 9, 2018 10:49:31.9514 AM 0:04:10.610: 417 rows affected
+47: UPDATE TESTB.TW108_EXTEND_WAIT EW
+SET DTE_OFF = '2018-02-21',
+    LST_UPD_USERID = 'FIX',
+    LST_UPD_TERMINAL = 'BTCH',
+    LST_UPD_TIMESTAMP = CURRENT TIMESTAMP
+WHERE EXISTS
+         (SELECT 1
+          FROM TESTB.TW108_EXTEND_WAIT A, TESTB.TW331_ITEMDEFN B
+          WHERE     A.ITEM_TYPE = EW.ITEM_TYPE
+                AND A.ITEM_CODE = EW.ITEM_CODE
+                AND A.COVER = EW.COVER
+                AND A.DTE_ON = EW.DTE_ON
+                AND A.ITEM_TYPE = B.ITEM_TYPE
+                AND A.ITEM_CODE = B.ITEM_CODE
+                AND A.DTE_OFF = '31.12.9999'
+                AND B.DTE_OFF = '31.12.9999'
+                AND A.COVER IN ('MB0', 'L00', 'G00')
+                AND B.ASSESS_GROUP IN ('100',
+                                       '314',
+                                       '101',
+                                       '321',
+                                       '104',
+                                       '103'))
+Statement:Friday, Feb 9, 2018 10:53:42.5635 AM 0:03:32.300: 237 rows affected
+77: UPDATE TESTB.TW108_EXTEND_WAIT EW
+SET DTE_OFF = '2018-02-21',
+    LST_UPD_USERID = 'FIX',
+    LST_UPD_TERMINAL = 'BTCH',
+    LST_UPD_TIMESTAMP = CURRENT TIMESTAMP
+WHERE EXISTS
+         (SELECT 1
+          FROM TESTB.TW108_EXTEND_WAIT A, TESTB.TW331_ITEMDEFN B
+          WHERE     A.ITEM_TYPE = EW.ITEM_TYPE
+                AND A.ITEM_CODE = EW.ITEM_CODE
+                AND A.COVER = EW.COVER
+                AND A.DTE_ON = EW.DTE_ON
+                AND A.ITEM_TYPE = B.ITEM_TYPE
+                AND A.ITEM_CODE = B.ITEM_CODE
+                AND A.DTE_OFF = '31.12.9999'
+                AND B.DTE_OFF = '31.12.9999'
+                AND A.COVER IN ('HM0', 'HN0', 'HO0')
+                AND B.ASSESS_GROUP IN ('104', '103', '102'))
+Statement:Friday, Feb 9, 2018 10:57:14.8687 AM 0:04:16.413: 198 rows affected
+103: UPDATE TESTB.TW108_EXTEND_WAIT EW
+SET DTE_OFF = '2018-02-21',
+    LST_UPD_USERID = 'FIX',
+    LST_UPD_TERMINAL = 'BTCH',
+    LST_UPD_TIMESTAMP = CURRENT TIMESTAMP
+WHERE EXISTS
+         (SELECT 1
+          FROM TESTB.TW108_EXTEND_WAIT A, TESTB.TW331_ITEMDEFN B
+          WHERE     A.ITEM_TYPE = EW.ITEM_TYPE
+                AND A.ITEM_CODE = EW.ITEM_CODE
+                AND A.COVER = EW.COVER
+                AND A.DTE_ON = EW.DTE_ON
+                AND A.ITEM_TYPE = B.ITEM_TYPE
+                AND A.ITEM_CODE = B.ITEM_CODE
+                AND A.DTE_OFF = '31.12.9999'
+                AND B.DTE_OFF = '31.12.9999'
+                AND A.COVER IN ('A00', 'AJ0', 'AK0')
+                AND B.ASSESS_GROUP IN ('100',
+                                       '314',
+                                       '101',
+                                       '321'))
+Statement:Friday, Feb 9, 2018 11:01:31.3444 AM 0:03:20.571: 42 rows affected
+132: UPDATE TESTB.TW108_EXTEND_WAIT EW
+SET DTE_OFF = '2018-02-21',
+    LST_UPD_USERID = 'FIX',
+    LST_UPD_TERMINAL = 'BTCH',
+    LST_UPD_TIMESTAMP = CURRENT TIMESTAMP
+WHERE EXISTS
+         (SELECT 1
+          FROM TESTB.TW108_EXTEND_WAIT A, TESTB.TW331_ITEMDEFN B
+          WHERE     A.ITEM_TYPE = EW.ITEM_TYPE
+                AND A.ITEM_CODE = EW.ITEM_CODE
+                AND A.COVER = EW.COVER
+                AND A.DTE_ON = EW.DTE_ON
+                AND A.ITEM_TYPE = B.ITEM_TYPE
+                AND A.ITEM_CODE = B.ITEM_CODE
+                AND A.DTE_OFF = '31.12.9999'
+                AND B.DTE_OFF = '31.12.9999'
+                AND A.COVER IN ('4K0', '5K0', '6K0')
+                AND B.ASSESS_GROUP IN ('100', '314'))
+Statement:Friday, Feb 9, 2018 11:04:51.9194 AM 0:04:29.121: 5736 rows affected
+161: UPDATE TESTD.TW108_EXTEND_WAIT EW
+SET DTE_OFF = '2018-02-21',
+    LST_UPD_USERID = 'FIX',
+    LST_UPD_TERMINAL = 'BTCH',
+    LST_UPD_TIMESTAMP = CURRENT TIMESTAMP
+WHERE EXISTS
+         (SELECT 1
+          FROM TESTD.TW108_EXTEND_WAIT A, TESTD.TW331_ITEMDEFN B
+          WHERE     A.ITEM_TYPE = EW.ITEM_TYPE
+                AND A.ITEM_CODE = EW.ITEM_CODE
+                AND A.COVER = EW.COVER
+                AND A.DTE_ON = EW.DTE_ON
+                AND A.ITEM_TYPE = B.ITEM_TYPE
+                AND A.ITEM_CODE = B.ITEM_CODE
+                AND A.DTE_OFF = '31.12.9999'
+                AND B.DTE_OFF = '31.12.9999'
+                AND A.COVER IN ('A00',
+                                'AJ0',
+                                'AK0',
+                                '4K0',
+                                '5K0',
+                                '6K0',
+                                'HG0',
+                                'HH0',
+                                'HI0',
+                                'HJ0',
+                                'HK0',
+                                'HL0')
+                AND B.ASSESS_GROUP IN ('066',
+                                       '310',
+                                       '061',
+                                       '073'))
+Statement:Friday, Feb 9, 2018 11:09:21.0433 AM 0:00:01.351: 0 rows affected
+201: INSERT INTO TESTD.TW108_EXTEND_WAIT
+   (SELECT A.ITEM_TYPE,
+           A.ITEM_CODE,
+           A.COVER,
+           '2018-02-22',
+           '9999-12-31',
+           '',
+           A.SUPP_WAIT,
+           A.WAIT_PERIOD,
+           A.PRE_EXIST_PERIOD,
+           'FIX',
+           'BTCH',
+           CURRENT TIMESTAMP,
+           A.SERVICE_CODE,
+           A.ASSESS_GROUP,
+           'Y'
+    FROM TESTD.TW108_EXTEND_WAIT A, TESTD.TW331_ITEMDEFN B
+    WHERE     A.ITEM_TYPE = B.ITEM_TYPE
+          AND A.ITEM_CODE = B.ITEM_CODE
+          AND A.DTE_OFF = '31.12.9999'
+          AND B.DTE_OFF = '31.12.9999'
+          AND A.COVER IN ('A00',
+                          'AJ0',
+                          'AK0',
+                          '4K0',
+                          '5K0',
+                          '6K0',
+                          'HG0',
+                          'HH0',
+                          'HI0',
+                          'HJ0',
+                          'HK0',
+                          'HL0')
+          AND B.ASSESS_GROUP IN ('066',
+                                 '310',
+                                 '061',
+                                 '073'))
+Script Execution:Friday, Feb 9, 2018 11:09:22.4635 AM: Execution finished in 0:25:29.951
+

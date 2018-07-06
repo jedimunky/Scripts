@@ -1,5 +1,6 @@
 Set-Location D:\scripts\Db2
-$dblist  = .\listAllDb2Databases.ps1
+$InstanceList = .\listAllDb2Databases.ps1
+$dblist = $InstanceList.Instances
 $getsize = "CALL GET_DBSIZE_INFO(?, ?, ?, 0)"
 $report  = ""
 

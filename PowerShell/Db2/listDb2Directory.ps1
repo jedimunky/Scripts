@@ -99,4 +99,4 @@ $InstanceList = New-Object PSObject -Property @{
 
 Set-Location -Path $CurrentLocation
 
-$InstanceList.Instances | Select-Object -Property SQLLibCopyBin, Instance, Database, Location | where {$_.Location -like "*:*" } | sort SQLLibCopyBin, Instance, Database
+$InstanceList.Instances | Select-Object -Property SQLLibCopyBin, Instance, Database, Location | Where-Object {$_.Location -like "*:*" } | Sort-Object SQLLibCopyBin, Instance, Database

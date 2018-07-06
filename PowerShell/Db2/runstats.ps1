@@ -23,9 +23,9 @@ function buildStatements ($runlist) # build statements for schema
         $dbname   = ($line.split(",")[1])
         $schema   = ($line.split(",")[2])
         
-        $connect  = "connect to $dbname"
-        Start-Process -FilePath "db2.exe" -ArgumentList $connect -NoNewWindow
-    
+        $outfile  = .\db2 +o "connect to $dbname"
+
+		$stmt = .\db2 +o ""
         
         "In the $instance instance, for $dbname database, runstat all tables in schema $schema"
     }

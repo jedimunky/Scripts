@@ -1,0 +1,54 @@
+PowerShell
+==========
+Scripts for...
+
+hadr - some dbs not supposed to be hadr
+runstats - multi copy multi instance exec problem
+refresh - needs restore from bowdi
+health check - stored proc from powershell?
+
+DONE
+backup
+restore
+
+
+Stuff I 'own'
+=============
+Spotlight, hpvdbaspot1
+Data Server Manager, hpvdbaspot1
+NetBackup,
+	hrsudbbi1
+	hrvudbtibweb1
+	hrvldap4/5
+	htvldap2
+	htvudbtibweb1/2 - 1 'broken'
+MongoDB, h*vmongo1/2/3
+Powershell for DB2 scripts
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+This past half year (Jan 2018)
+* Spotlight, monitoring Siebel Production 24x7 on overhead screen, used to spot low disk space, high disk I/O, and rogue threads.
+* Data Server Manager, monitoring all other Db2 production systems, 24x7 on overhead screen, used for availability and process checking.
+* MongoDB for Sitecore, deployed to production in 3 replica set, secured, recoverable and highly available, has already recorded 0.5 million interactions.
+* NetBackup, configured for all v10+ non-production environments, saving disk space (99% de-duplication), and running much faster than before.
+* PowerShell, used for NetBackup, log archiving and deleting, and a host of other useful scripts.
+* Refresh process (old), automated with Control-M reducing manual involvement and run times.
+
+Post Jan 2018
+* Performance tuning, identified and fixed a number of poor performing production SQL queries.
+* NetBackup, implemented throttling to prevent overloading of network and appliance.
+* 
+
+Currently working on...
+=======================
+PowerShell ???
+Apptune - performance
+		- TW041 - locking throughout system
+		- 
+	
+PowerShell Tips
+===============
+Invoke_Item (ii) <file> - Open file with default viewer, use "ii ." to open Explorer at current location
+<cmd> | clip            - Pipes cmd to clipboard for pasting elsewhere
+<cmd> | Out-GridView    - Pipes cmd to GUI Grid View

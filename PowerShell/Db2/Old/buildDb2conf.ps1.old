@@ -1,0 +1,76 @@
+# Build NetBackup db2.conf file for all databases
+
+# Find all active databases in all instances
+Set-Location D:\scripts\Db2
+$InstanceList = .\listAllDb2Databases.ps1
+$dblist = $InstanceList.Instances
+$dblist = $dblist | Select-Object -Property SQLLibCopyBin, Instance, Database, DatabasePath | sort SQLLibCopyBin, Instance, Database
+$db2conf = @()
+
+# Rename db2.conf used for restore
+$nbconf = "D:\Program Files\VERITAS\NetBackup\DbExt\DB2\db2.conf"
+if (Test-Path $nbconf) 
+{
+	Rename-Item -Path $nbconf -NewName "restore.db2.conf" -Force
+}
+
+# Determine schedule
+$dayofmonth = (Get-Date).Day
+$month      = (Get-Date).Month
+$dayofweek  = (Get-Date).DayOfWeek
+
+switch ($env:COMPUTERNAME[1])
+{
+	{$env:COMPUTERNAME[1] -eq "T"} {$locale = "DEV"  ; break}
+	{$env:COMPUTERNAME[1] -eq "R"} {$locale = "REL"  ; break}
+	{$env:COMPUTERNAME[1] -eq "P"} {$locale = "PROD" ; break}
+}
+
+# if ($dayofmonth -eq 18)
+if ($dayofmonth -le 7 -and $dayofweek -eq "Friday") 
+{
+    if ($month -eq 1) # First Friday of the year 
+    {
+        $retain = "YEARLY"
+    } else {          # First Friday of the month
+        $retain = "MONTHLY"
+    }
+} else {              # Daily schedule 
+	$retain = "DAILY"
+} #end if
+
+$schedule     = "SCHEDULE HO_" + $locale + "_APPLICATION_BACKUP_" + $retain + ""
+$objecttype   = "OBJECTTYPE DATABASE"
+$policy       = "POLICY HO_" + $locale + "_DB2_DB"
+$endoper      = "ENDOPER"
+$space        = ""
+
+# Build db2.conf for each SQLLIB 
+if (@($dblist).count -eq 1) { 
+	$savedsqllib = $dblist.SQLLibCopyBin -Replace [regex]::escape("\BIN"), ""
+} else { 
+	$savedsqllib = $dblist[0].SQLLibCopyBin -Replace [regex]::escape("\BIN"), ""
+}
+$outfile     = "db2.conf"
+
+foreach ($item in $dblist)
+{
+	if (($item.SQLLibCopyBin -Replace [regex]::escape("\BIN"), "") -ne $savedsqllib)
+	{
+		Set-Location $savedsqllib
+		$db2conf | Out-File $outfile -Encoding ascii
+		$db2conf = @()
+		$savedsqllib = $item.SQLLibCopyBin -Replace [regex]::escape("\BIN"), ""
+	}
+	$db2conf += "DATABASE "+$item.Database
+	$db2conf += $objecttype
+    $db2conf += $policy
+	$db2conf += $schedule
+	$db2conf += $endoper
+	$db2conf += $space
+}
+
+Set-Location $savedsqllib
+$db2conf | Out-File $outfile -Encoding ascii
+
+Set-Location D:\scripts\Db2

@@ -94,9 +94,10 @@ Function GetInstanceDatabaseList ($SQLLib)
 
 $InstanceList = New-Object PSObject -Property @{
     "SQLLibs" = $(ListInstancesOfSQLLibs -RegistryPath $RegistryPath)
-    "Instances" = $(GetInstanceDatabaseList -SQLLib (ListInstancesOfSQLLibs -RegistryPath $RegistryPath))
+    "Instances" = $(GetInstanceDatabaseList -SQLLib @(ListInstancesOfSQLLibs -RegistryPath $RegistryPath))
 }
 
 Set-Location -Path $CurrentLocation
 
-$InstanceList.Instances | Select-Object -Property SQLLibCopyBin, Instance, Database, DatabasePath | Sort-Object SQLLibCopyBin, Instance, Database | Format-Table -AutoSize
+# $InstanceList.Instances | Select-Object -Property SQLLibCopyBin, Instance, Database, DatabasePath | sort SQLLibCopyBin, Instance, Database | Format-Table -AutoSize
+$InstanceList
