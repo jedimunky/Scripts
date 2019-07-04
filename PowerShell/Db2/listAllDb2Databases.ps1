@@ -1,103 +1,69 @@
-$RegistryPath = "HKLM:\SOFTWARE\IBM\DB2\InstalledCopies\"
-$CurrentLocation = Get-Location
-
-Function ListSQLLibCopies ([string]$RegistryPath)
+# Lists cataloged databases on a client
+Function global:db ()
 {
-    Set-Location -path $RegistryPath
-    $ListofSQLLibCopies = get-childitem | Get-ItemProperty
-    Return $ListofSQLLibCopies
+	$line   = ""
+	$dblist = @()
+
+	db2 list db directory | select-string 'alias|node' | convertfrom-stringdata | foreach-object { 
+		if ($_."Database alias") { $alias = $_."Database alias" }
+		if ($_."Node name")      { $node  = $_."Node name" }
+		if ((-not [string]::IsNullOrEmpty($alias)) -and (-not [string]::IsNullOrEmpty($node)))
+		{
+			$line = New-Object PSObject -Property @{
+				"DatabaseName" = $alias
+				"NodeName"     = $node
+			}
+			$dblist += $line
+			clear-variable alias
+			clear-variable node
+		} # end if on alias and node 
+	} # end foreach-object
+
+	$dblist | Sort-Object NodeName, DatabaseName
 }
 
-Function GetSQLLibDetails ($item)
+# Same shit but for nodes
+Function global:nl ()
 {
-    Set-Location -Path ($item."DB2 Path Name" + "BIN")
-    $SQLLibDetails = New-Object PSObject -Property @{
-        "SQLLibCopyName" = $item.PSChildName
-        "SQLLibCopyPath" = $item."DB2 Path Name"
-        "SQLLibCopyBin" = $item."DB2 Path Name" + "BIN"
-        "Instances" = (.\db2ilist)
-    }
-    return $SQLLibDetails
+	$hostname = ""
+	$nodename = ""
+	$portnum  = ""
+	$line     = ""
+	$nodelist = @()
+
+	db2 list node directory | select-string -NotMatch 'entry|directory' | select-string 'node|host|service' | convertfrom-stringdata | foreach-object { 
+		if ($_."Hostname")     { $hostname = $_."Hostname" }
+		if ($_."Node name")    { $nodename = $_."Node name" }
+		if ($_."Service Name") { $portnum  = $_."Service Name" }
+		if ((-not [string]::IsNullOrEmpty($hostname)) -and (-not [string]::IsNullOrEmpty($nodename)) -and (-not [string]::IsNullOrEmpty($portnum)))
+		{
+			$line = New-Object PSObject -Property @{
+				"HostName" = $hostname
+				"Port"     = $portnum
+				"NodeName" = $nodename
+			}
+			$nodelist += $line
+			clear-variable hostname
+			clear-variable nodename
+			clear-variable portnum
+		} # end if on alias and node 
+	} # end foreach-object
+
+	$nodelist | Sort-Object NodeName, HostName, Port
 }
 
-Function ListInstancesOfSQLLibs ([string]$RegistryPath)
-{
-    $CurrentLocation = Get-Location
-    $ListofSQLLibCopies = ListSQLLibCopies -RegistryPath $RegistryPath
-    $InstanceListTemp = @()
-    
-    foreach ($item in $ListofSQLLibCopies) 
-    {
-        $InstanceListTemp += GetSQLLibDetails -Item $item
-    }
+<#--
+NodeName DatabaseName
+-------- ------------
+DB2ECL   DB_ECLP
 
-    Set-Location -Path $CurrentLocation
-    return $InstanceListTemp
-}
+Port  NodeName HostName
+----  -------- --------
+50002 DB2ECL   hpvudbtibweb1.corp.hbf.com.au
 
-Function DatabaseListCleanup ($SQLLibInstanceItem)
-{
-    $DatabaseListTemp = @()
-    set-item -path env:DB2INSTANCE -value $SQLLibInstanceItem
-    Set-Location -path $env:DB2CLP
-    $ActiveDatabases = (.\db2 list active databases | Select-String -Pattern "Database name","Database path")
-    for ($intCounter=0;$intCounter -lt $ActiveDatabases.count; $intCounter += 2 )
-    {
-        $DBNameCleanup = ($ActiveDatabases[$intCounter]).tostring()
-        $DBPathCleanup = ($ActiveDatabases[$intCounter+1]).tostring()
-        $ActiveDatabasesHash = New-Object PSObject -Property @{
-            "Instance" = $SQLLibInstanceItem
-            "Database" = $DBNameCleanup.remove(0,$DBNameCleanup.indexof("=")+2)
-            "DatabasePath" = $DBPathCleanup.remove(0,$DBPathCleanup.indexof("=")+2)
-            "SQLLibCopyBin" = $env:DB2CLP                            
-        }
-        $DatabaseListTemp += $ActiveDatabasesHash
-    }
-    Return $DatabaseListTemp
-}
+if ($a[0].NodeName -eq $b[0].NodeName) { $c = ("Database Name: " + $a.DatabaseName[0] + ", Node: " + $a.NodeName[0] + ", Server Name: " + $b. HostName[0] + ", Port Num: " + $b.Port[0] ) }
 
-Function GetInstanceDatabaseList ($SQLLib)
-{
-    $ActiveDatabasesList = @()
-    If ($SQLLib.count -ge 1)
-    {
-        foreach($SQLLibItem in $SQLLib)
-        {
-            set-item -path env:DB2CLP -value $SQLLibItem.SQLLibCopyBin
-            If ($SQLLibItem.Instances.count -ge 1)
-            {
-                foreach($SQLLibInstanceItem in $SQLLibItem.Instances)
-                {
-                    $ActiveDatabasesList += DatabaseListCleanup -SQLLibInstanceItem $SQLLibInstanceItem
-                }        
-            }else {
-                $SQLLibInstanceItem = $SQLLibItem.Instances
-                $ActiveDatabasesList += DatabaseListCleanup -SQLLibInstanceItem $SQLLibInstanceItem
-            }
-        }
-    }else {
-        If ($SQLLib.Instances.count -ge 1)
-        {
-            set-item -path env:DB2CLP -value $SQLLib.SQLLibCopyBin
-            foreach($SQLLibInstanceItem in $SQLLib.Instances)
-            {
-                $ActiveDatabasesList += DatabaseListCleanup -SQLLibInstanceItem $SQLLibInstanceItem
-            }        
-        }else {
-            set-item -path env:DB2CLP -value $SQLLib.SQLLibCopyBin
-            $SQLLibInstanceItem = $SQLLib.Instances
-            $ActiveDatabasesList += DatabaseListCleanup -SQLLibInstanceItem $SQLLibInstanceItem
-        }
-    }
-    Return $ActiveDatabasesList | Sort-Object Instance
-}
+Database Name: DB_ECLP, Node: DB2ECL, Server Name: hpvudbtibweb1.corp.hbf.com.au, Port Num: 50002
+--#>
 
-$InstanceList = New-Object PSObject -Property @{
-    "SQLLibs" = $(ListInstancesOfSQLLibs -RegistryPath $RegistryPath)
-    "Instances" = $(GetInstanceDatabaseList -SQLLib @(ListInstancesOfSQLLibs -RegistryPath $RegistryPath))
-}
 
-Set-Location -Path $CurrentLocation
-
-# $InstanceList.Instances | Select-Object -Property SQLLibCopyBin, Instance, Database, DatabasePath | sort SQLLibCopyBin, Instance, Database | Format-Table -AutoSize
-$InstanceList

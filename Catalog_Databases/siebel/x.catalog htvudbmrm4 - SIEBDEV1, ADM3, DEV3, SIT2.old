@@ -27,13 +27,4 @@ catalog tcpip node DB2SIED3 remote htvudbmrm4.dev.hbf.com.au server 50002 remote
 catalog db SIEBDEV3 as SIEBDEV3 at node DB2SIED3;
 catalog system odbc data source SIEBDEV3;
 
--- Siebel Sit2
-uncatalog db SIEBSIT2;
-uncatalog system odbc data source SIEBSIT2;
-uncatalog node DB2SIES2;
-
-catalog tcpip node DB2SIES2 remote htvudbmrm4.dev.hbf.com.au server 50000 remote_instance DB2SIEB system htvudbmrm4 ostype win;
-catalog db SIEBSIT2 as SIEBSIT2 at node DB2SIES2;
-catalog system odbc data source SIEBSIT2;
-
 terminate;

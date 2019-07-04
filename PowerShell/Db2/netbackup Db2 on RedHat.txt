@@ -1,0 +1,3 @@
+-- netbackup db2 on redhat
+-- needs /home/db2sdin1/db2.conf
+db2 "backup database SIEBPOCA online load '/usr/openv/netbackup/bin/nbdb2.so64' open 2 sessions dedup_device with 4 buffers buffer 1024"

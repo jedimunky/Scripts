@@ -1,0 +1,12 @@
+<#
+.SYNOPSIS
+.DESCRIPTION
+.PARAMETER  <Parameter-Name>
+.EXAMPLE
+.INPUTS
+.OUTPUTS
+.NOTES
+   Author: Paul King
+   Created: <mm-dd-yyyy>
+.LINK
+#>

@@ -31,7 +31,7 @@ Function GetAvailableRestores ($RestoreFromFQDN,$NetbackupInstallDir)
 	$server    = $env:COMPUTERNAME.ToLower()
 	$domain    = $env:USERDNSDOMAIN.ToLower()
     $RestoreFromFQDN = "$server.$domain"
-    $RestoreItems = (.\bplist.exe -l -C $RestoreFromFQDN -t 18 -R /) | foreach{GetTimestampAndSize -RestoreItemsPart $_}
+    $RestoreItems = (.\bplist.exe -l -C $RestoreFromFQDN -t 18 -R /) | ForEach-Object{GetTimestampAndSize -RestoreItemsPart $_}
     Return $RestoreItems
 }
 
@@ -41,4 +41,4 @@ $RestoreDetails = New-Object PSObject -Property @{
 
 Set-Location $currentLocation
 
-$RestoreDetails.DatabasesAvailable | Select-Object -Property DatabaseInstance, DatabaseName, BackupDateTime, BackupTimeStamp -unique | Sort DatabaseInstance, DatabaseName, BackupDateTime | Format-Table -AutoSize
+$RestoreDetails.DatabasesAvailable | Select-Object -Property DatabaseInstance, DatabaseName, BackupDateTime, BackupTimeStamp -unique | Sort-Object DatabaseInstance, DatabaseName, BackupDateTime | Format-Table -AutoSize

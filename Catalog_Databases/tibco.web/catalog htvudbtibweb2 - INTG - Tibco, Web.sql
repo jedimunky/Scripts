@@ -66,4 +66,13 @@ catalog system odbc data source DB_INTLE;
 catalog system odbc data source DB_INTSM;
 catalog system odbc data source DB_INTTD;
 
+-- ODS (Dev)
+uncatalog db DB_ODSD; 
+uncatalog system odbc data source DB_ODSD;
+uncatalog node DB2ODS;
+
+catalog tcpip node DB2ODS remote htvudbtibweb2.dev.hbf.com.au server 50012 remote_instance DB2ODS system htvudbtibweb2 ostype win;
+catalog db DB_ODSD as DB_ODSD at node DB2ODS authentication SERVER;
+catalog system odbc data source DB_ODSD;
+
 terminate;

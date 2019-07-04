@@ -105,4 +105,13 @@ catalog system odbc data source DB_TRNLE;
 catalog system odbc data source DB_TRNSM;
 catalog system odbc data source DB_TRNTD;
 
+-- ODS (rlse)
+uncatalog db DB_ODSR; 
+uncatalog system odbc data source DB_ODSR;
+uncatalog node DB2ODS;
+
+catalog tcpip node DB2ODS remote hrvudbtibweb1.corp.hbf.com.au server 50012 remote_instance DB2ODS system hrvudbtibweb1 ostype win;
+catalog db DB_ODSR as DB_ODSR at node DB2ODS authentication SERVER;
+catalog system odbc data source DB_ODSR;
+
 terminate;

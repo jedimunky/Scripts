@@ -9,8 +9,6 @@ catalog tcpip node DB2SIEBR remote hrvudbmrm1.corp.hbf.com.au server 50000 remot
 catalog db SIEBRLS as SIEBRLS at node DB2SIEBR;
 catalog system odbc data source SIEBRLS;
 
-terminate;
-
 -- Siebel Trng
 uncatalog db SIEBTRN;
 uncatalog system odbc data source SIEBTRN;

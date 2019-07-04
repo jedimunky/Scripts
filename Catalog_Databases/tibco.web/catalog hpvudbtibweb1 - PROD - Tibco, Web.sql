@@ -62,4 +62,13 @@ catalog system odbc data source DB_PRDLE;
 catalog system odbc data source DB_PRDSM;
 catalog system odbc data source DB_PRDTD;
 
+-- ODS
+uncatalog db DB_ODSP; 
+uncatalog system odbc data source DB_ODSP;
+uncatalog node DB2ODS;
+
+catalog tcpip node DB2ODS remote hpvudbtibweb1.corp.hbf.com.au server 50012 remote_instance DB2ODS system hpvudbtibweb1 ostype win;
+catalog db DB_ODSP as DB_ODSP at node DB2ODS authentication SERVER;
+catalog system odbc data source DB_ODSP;
+
 terminate;
