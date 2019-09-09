@@ -108,10 +108,10 @@ catalog system odbc data source DB_TRNTD;
 -- ODS (rlse)
 uncatalog db DB_ODSR; 
 uncatalog system odbc data source DB_ODSR;
-uncatalog node DB2ODS;
+uncatalog node DB2ODSR;
 
-catalog tcpip node DB2ODS remote hrvudbtibweb1.corp.hbf.com.au server 50012 remote_instance DB2ODS system hrvudbtibweb1 ostype win;
-catalog db DB_ODSR as DB_ODSR at node DB2ODS authentication SERVER;
+catalog tcpip node DB2ODSR remote hrvudbtibweb1.corp.hbf.com.au server 50012 remote_instance DB2ODS system hrvudbtibweb1 ostype win;
+catalog db DB_ODSR as DB_ODSR at node DB2ODSR authentication SERVER;
 catalog system odbc data source DB_ODSR;
 
 terminate;
