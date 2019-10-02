@@ -1,0 +1,1 @@
+mongo localhost/admin -eval "db.runCommand({logRotate:1})"

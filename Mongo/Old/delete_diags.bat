@@ -1,0 +1,1 @@
+forfiles -p "E:\data\diagnostic.data" -s -m *.* -d -30 -c "cmd /c del /q @path"

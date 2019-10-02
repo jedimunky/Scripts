@@ -1,0 +1,8 @@
+use admin
+db.createUser(
+{
+user: "svc_MongoDB",
+pwd: "nRo2ZWbvFxQVouKO",
+roles: ["root", "userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]
+}
+)

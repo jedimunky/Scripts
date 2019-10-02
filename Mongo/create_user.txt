@@ -1,0 +1,32 @@
+use DEV_Sitecore_analytics
+db.createUser(
+{
+user: "CMSUser_dev",
+pwd: "snoopy",
+roles: [ { role: "readWrite", db: "DEV_Sitecore_analytics" } ]
+}
+)
+use DEV_Sitecore_tracking_contact
+db.createUser(
+{
+user: "CMSUser_dev",
+pwd: "snoopy",
+roles: [ { role: "readWrite", db: "DEV_Sitecore_tracking_contact" } ]
+}
+)
+use DEV_Sitecore_tracking_history
+db.createUser(
+{
+user: "CMSUser_dev",
+pwd: "snoopy",
+roles: [ { role: "readWrite", db: "DEV_Sitecore_tracking_history" } ]
+}
+)
+use DEV_Sitecore_tracking_live
+db.createUser(
+{
+user: "CMSUser_dev",
+pwd: "snoopy",
+roles: [ { role: "readWrite", db: "DEV_Sitecore_tracking_live" } ]
+}
+)
