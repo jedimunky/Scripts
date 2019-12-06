@@ -21,7 +21,7 @@
 $CurrentLocation = Get-Location
 $OraRegPath      = "HKLM:\SOFTWARE\ORACLE\"
 
-Function List-OracleDetails ([string]$OraRegPath)
+Function Search-OracleDetails ([string]$OraRegPath)
 {
 <#
     Navigate to Oracle registry key
@@ -46,7 +46,7 @@ Function Get-OracleDetails ()
 	Format the raw registry details
 	into a neat Powershell list
 #>
-	$OracleList = List-OracleDetails $OraRegPath
+	$OracleList = Search-OracleDetails $OraRegPath
 	
 	ForEach ($item in $OracleList)
 	{
