@@ -1,0 +1,1 @@
+type 002.GenAddDatabase.sql | clip.exe

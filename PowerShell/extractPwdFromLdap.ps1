@@ -1,0 +1,1 @@
+$shaPwd = (ldapsearch -h hrvldap4 -p 4389 -D cn=LdapAdmin -w Ldap2015@HBF -s sub -b ou=WSAdmin,o=HBF,dc=com.au,c=au objectclass=* | Select-String userPassword)

@@ -1,0 +1,1 @@
+DBCC opentran(<dbname>)

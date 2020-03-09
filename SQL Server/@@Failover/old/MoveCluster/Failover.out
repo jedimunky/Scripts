@@ -1,0 +1,43 @@
+
+****************************************************************************************
+* Cluster Group - pre move                                                                           
+****************************************************************************************
+
+Name                                                               OwnerNode                                                          State                                                            
+----                                                               ---------                                                          -----                                                            
+Available Storage                                                  HPVSQL23                                                           Offline                                                          
+BUSINESSINTEL_AG                                                   HPVSQL23                                                           Online                                                           
+CARDIOLOG_AG                                                       HPVSQL23                                                           Online                                                           
+Cluster Group                                                      HPVSQL23                                                           Online                                                           
+MSSQLSERVER_AG                                                     HPVSQL23                                                           Online                                                           
+SHAREPOINT_AG                                                      HPVSQL23                                                           Offline                                                          
+SHAREPOINTPROD_AG                                                  HPVSQL23                                                           Online                                                           
+
+****************************************************************************************
+* Move cluster - to HPVSQL24                                                                           
+****************************************************************************************
+
+Moving Cluster Resources to HPVSQL24
+
+Name                                                               OwnerNode                                                          State
+----                                                               ---------                                                          -----
+Cluster Group                                                      HPVSQL24                                                           Online                                                           
+Available Storage                                                  HPVSQL24                                                           Offline                                                          
+
+Moving Availability Groups to HPVSQL24
+
+****************************************************************************************
+* Cluster Group - post move                                                                           
+****************************************************************************************
+
+Name                                                               OwnerNode                                                          State
+----                                                               ---------                                                          -----
+Available Storage                                                  HPVSQL24                                                           Offline                                                          
+BUSINESSINTEL_AG                                                   HPVSQL24                                                           Online                                                           
+CARDIOLOG_AG                                                       HPVSQL24                                                           Online                                                           
+Cluster Group                                                      HPVSQL24                                                           Online                                                           
+MSSQLSERVER_AG                                                     HPVSQL24                                                           Online                                                           
+SHAREPOINT_AG                                                      HPVSQL23                                                           Offline                                                          
+SHAREPOINTPROD_AG                                                  HPVSQL24                                                           Online                                                           
+
+

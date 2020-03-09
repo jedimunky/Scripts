@@ -1,0 +1,490 @@
+# Install IBM Db2 DB Drivers for Python (Powershell)
+
+Set-Item -Path env:IBM_DB_HOME -Value 'C:\Program Files\IBM\SQLLIB' # Db2 installation folder
+pip install --proxy proxy.corp.hbf.com.au:6010 ibm_db
+
+
+# Set-up and connect
+
+from ibm_db import connect
+
+connection = connect('DATABASE=HBFTDB2;'
+                     'HOSTNAME=sysc.dev.hbf.com.au;'  # 127.0.0.1 or localhost works if it's local
+                     'PORT=456;'
+                     'PROTOCOL=TCPIP;'
+                     'UID=P1K;'
+                     'PWD=XXXXXXXX;', '', '') # Don't forget your password!
+					 
+def results(command):
+    from ibm_db import fetch_assoc
+
+    ret = []
+    result = fetch_assoc(command)
+    while result:
+        ret.append(result)
+        result = fetch_assoc(command)
+    return ret
+	
+from ibm_db import exec_immediate
+from ibm_db import fetch_both
+
+sql = 'SELECT NAME FROM SYSIBM.SYSTABLES FETCH FIRST 10 ROWS ONLY'
+rows = results(exec_immediate(connection, sql))
+fetch_both(rows)
+
+# Another way to connect
+import ibm_db
+
+dsn_database = 'HBFTDB2'
+dsn_hostname = 'SYSC.DEV.HBF.COM.AU'
+dsn_port = '456'
+dsn_protocol = 'TCPIP'
+dsn_uid = 'P1K'
+dsn_pwd = 'XXXXXXXX'
+
+dsn = (
+	'DATABASE={0};'
+	'HOSTNAME={1};'
+	'PORT={2};'
+	'PROTOCOL={3};'
+	'UID={4};'
+	'PWD={5};').format(dsn_database, dsn_hostname, dsn_port, dsn_protocol, dsn_uid, dsn_pwd)
+
+try:
+	conn = ibm_db.connect(dsn, '', '')
+	print('Connected!')
+	
+except:
+	print('Unable to connect to database')
+
+ibm_db.close(conn)
+
+# Using pandas
+import pandas
+import ibm_db_dbi
+
+sql = 'SELECT CREATOR, NAME FROM SYSIBM.SYSTABLES FETCH FIRST 10 ROWS ONLY'
+
+conn = ibm_db.connect(dsn, '', '')
+pconn = ibm_db_dbi.Connection(conn)
+df = pandas.read_sql(sql, pconn)
+df
+# output of df:
+#     CREATOR                NAME
+# 0  $INGDBA         DB2_CATALOGS
+# 1  $INGDBA       DB2_INDEX_KEYS
+# 2  $INGDBA     DB2_INDEX_SPACES
+# 3  $INGDBA      DB2_SITE_OWNERS
+# 4  $SYSINET       IIALT_COLSSYN
+# 5  $SYSINET       IIALT_COLUMNS
+# 6  $SYSINET      IIDB2_CATALOGS
+# 7  $SYSINET    IIDB2_INDEX_KEYS
+# 8  $SYSINET  IIDB2_INDEX_SPACES
+# 9  $SYSINET   IIDB2_SITE_OWNERS
+df.describe(include='all')
+
+# help
+help(ibm_db)
+Help on module ibm_db:
+
+NAME
+    ibm_db - IBM DataServer Driver for Python.
+
+CLASSES
+    builtins.object
+        IBM_DBClientInfo
+        IBM_DBConnection
+        IBM_DBServerInfo
+        IBM_DBStatement
+    
+    class IBM_DBClientInfo(builtins.object)
+     |  IBM DataServer Client Information object
+     |  
+     |  Static methods defined here:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  APPL_CODEPAGE
+     |      Application Codepage
+     |  
+     |  CONN_CODEPAGE
+     |      Connection Codepage
+     |  
+     |  DATA_SOURCE_NAME
+     |      Data Source Name
+     |  
+     |  DRIVER_NAME
+     |      Driver Name
+     |  
+     |  DRIVER_ODBC_VER
+     |      Driver ODBC Version
+     |  
+     |  DRIVER_VER
+     |      Driver Version
+     |  
+     |  ODBC_SQL_CONFORMANCE
+     |      ODBC SQL Conformance
+     |  
+     |  ODBC_VER
+     |      ODBC Version
+    
+    class IBM_DBConnection(builtins.object)
+     |  IBM DataServer connection object
+     |  
+     |  Static methods defined here:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+    
+    class IBM_DBServerInfo(builtins.object)
+     |  IBM DataServer Information object
+     |  
+     |  Static methods defined here:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  DBMS_NAME
+     |      Database Server Name
+     |  
+     |  DBMS_VER
+     |      Database Server Version
+     |  
+     |  DB_CODEPAGE
+     |      Database Codepage
+     |  
+     |  DB_NAME
+     |      Database Name
+     |  
+     |  DFT_ISOLATION
+     |      Default Server Isolation
+     |  
+     |  IDENTIFIER_QUOTE_CHAR
+     |      Character to quote an identifier
+     |  
+     |  INST_NAME
+     |      Database Server Instance Name
+     |  
+     |  ISOLATION_OPTION
+     |      Supported Isolation Levels
+     |  
+     |  KEYWORDS
+     |      Reserved words
+     |  
+     |  LIKE_ESCAPE_CLAUSE
+     |      TRUE if the database server supports the use of % and _ wildcard characters
+     |  
+     |  MAX_COL_NAME_LEN
+     |      Maximum length of column name supported by the database server in bytes
+     |  
+     |  MAX_IDENTIFIER_LEN
+     |      Maximum length of an SQL identifier supported by the database server, expressed in characters
+     |  
+     |  MAX_INDEX_SIZE
+     |      Maximum size of columns combined in an index supported by the database server, expressed in bytes
+     |  
+     |  MAX_PROC_NAME_LEN
+     |      Maximum length of a procedure name supported by the database server, expressed in bytes
+     |  
+     |  MAX_ROW_SIZE
+     |      Maximum length of a row in a base table supported by the database server, expressed in bytes
+     |  
+     |  MAX_SCHEMA_NAME_LEN
+     |      Maximum length of a schema name supported by the database server, expressed in bytes
+     |  
+     |  MAX_STATEMENT_LEN
+     |      Maximum length of an SQL statement supported by the database server, expressed in bytes
+     |  
+     |  MAX_TABLE_NAME_LEN
+     |      Maximum length of a table name supported by the database server, expressed in bytes
+     |  
+     |  NON_NULLABLE_COLUMNS
+     |      Connectionf the database server supports columns that can be defined as NOT NULL
+     |  
+     |  PROCEDURES
+     |      True if CALL statement is supported by database server
+     |  
+     |  SPECIAL_CHARS
+     |      Characters that can be used in an identifier
+     |  
+     |  SQL_CONFORMANCE
+     |      ANSI/ISO SQL-92 Specification Conformance
+    
+    class IBM_DBStatement(builtins.object)
+     |  IBM DataServer cursor object
+     |  
+     |  Static methods defined here:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+FUNCTIONS
+    active(...)
+        Checks if the specified connection resource is active
+    
+    autocommit(...)
+        Returns or sets the AUTOCOMMIT state for a database connection
+    
+    bind_param(...)
+        Binds a Python variable to an SQL statement parameter
+    
+    callproc(...)
+        Returns a tuple containing OUT/INOUT variable value
+    
+    check_function_support(...)
+        return true if fuction is supported otherwise return false
+    
+    client_info(...)
+        Returns a read-only object with information about the DB2 database client
+    
+    close(...)
+        Close a database connection
+    
+    column_privileges(...)
+        Returns a result set listing the columns and associated privileges for a table.
+    
+    columns(...)
+        Returns a result set listing the columns and associated metadata for a table
+    
+    commit(...)
+        Commits a transaction
+    
+    conn_error(...)
+        Returns a string containing the SQLSTATE returned by the last connection attempt
+    
+    conn_errormsg(...)
+        Returns an error message and SQLCODE value representing the reason the last database connection attempt failed
+    
+    conn_warn(...)
+        Returns a warning string containing the SQLSTATE returned by the last connection attempt
+    
+    connect(...)
+        Connect to the database
+    
+    createdb(...)
+        Create db
+    
+    createdbNX(...)
+        createdbNX
+    
+    cursor_type(...)
+        Returns the cursor type used by a statement resource
+    
+    dropdb(...)
+        Drop db
+    
+    exec_immediate(...)
+        Prepares and executes an SQL statement.
+    
+    execute(...)
+        Executes an SQL statement that was prepared by ibm_db.prepare()
+    
+    execute_many(...)
+        Execute SQL with multiple rows.
+    
+    fetch_assoc(...)
+        Returns a dictionary, indexed by column name, representing a row in a result set
+    
+    fetch_both(...)
+        Returns a dictionary, indexed by both column name and position, representing a row in a result set
+    
+    fetch_row(...)
+        Sets the result set pointer to the next row or requested row
+    
+    fetch_tuple(...)
+        Returns an tuple, indexed by column position, representing a row in a result set
+    
+    field_display_size(...)
+        Returns the maximum number of bytes required to display a column
+    
+    field_name(...)
+        Returns the name of the column in the result set
+    
+    field_nullable(...)
+        Returns indicated column can contain nulls or not
+    
+    field_num(...)
+        Returns the position of the named column in a result set
+    
+    field_precision(...)
+        Returns the precision of the indicated column in a result set
+    
+    field_scale(...)
+        Returns the scale of the indicated column in a result set
+    
+    field_type(...)
+        Returns the data type of the indicated column in a result set
+    
+    field_width(...)
+        Returns the width of the indicated column in a result set
+    
+    foreign_keys(...)
+        Returns a result set listing the foreign keys for a table
+    
+    free_result(...)
+        Frees resources associated with a result set
+    
+    free_stmt(...)
+        Frees resources associated with the indicated statement resource
+    
+    get_db_info(...)
+        Returns an object with properties that describe the DB2 database server according to the option passed
+    
+    get_last_serial_value(...)
+        Returns last serial value inserted for identity column
+    
+    get_num_result(...)
+        Returns the number of rows in a current open non-dynamic scrollable cursor
+    
+    get_option(...)
+        Gets the specified option in the resource.
+    
+    next_result(...)
+        Requests the next result set from a stored procedure
+    
+    num_fields(...)
+        Returns the number of fields contained in a result set
+    
+    num_rows(...)
+        Returns the number of rows affected by an SQL statement
+    
+    pconnect(...)
+        Returns a persistent connection to a database
+    
+    prepare(...)
+        Prepares an SQL statement.
+    
+    primary_keys(...)
+        Returns a result set listing primary keys for a table
+    
+    procedure_columns(...)
+        Returns a result set listing the parameters for one or more stored procedures.
+    
+    procedures(...)
+        Returns a result set listing the stored procedures registered in a database
+    
+    recreatedb(...)
+        recreate db
+    
+    result(...)
+        Returns a single column from a row in the result set
+    
+    rollback(...)
+        Rolls back a transaction
+    
+    server_info(...)
+        Returns an object with properties that describe the DB2 database server
+    
+    set_option(...)
+        Sets the specified option in the resource
+    
+    special_columns(...)
+        Returns a result set listing the unique row identifier columns for a table
+    
+    statistics(...)
+        Returns a result set listing the index and statistics for a table
+    
+    stmt_error(...)
+        Returns a string containing the SQLSTATE returned by an SQL statement
+    
+    stmt_errormsg(...)
+        Returns a string containing the last SQL statement error message
+    
+    stmt_warn(...)
+        Returns a warning string containing the SQLSTATE returned by last SQL statement
+    
+    table_privileges(...)
+        Returns a result set listing the tables and associated privileges in a database
+    
+    tables(...)
+        Returns a result set listing the tables and associated metadata in a database
+
+DATA
+    ATTR_CASE = 3271982
+    CASE_LOWER = 1
+    CASE_NATURAL = 0
+    CASE_UPPER = 2
+    PARAM_FILE = 11
+    QUOTED_LITERAL_REPLACEMENT_OFF = 0
+    QUOTED_LITERAL_REPLACEMENT_ON = 1
+    SQL_API_SQLROWCOUNT = 20
+    SQL_ATTR_AUTOCOMMIT = 102
+    SQL_ATTR_CURRENT_SCHEMA = 1254
+    SQL_ATTR_CURSOR_TYPE = 6
+    SQL_ATTR_INFO_ACCTSTR = 1284
+    SQL_ATTR_INFO_APPLNAME = 1283
+    SQL_ATTR_INFO_PROGRAMNAME = 2516
+    SQL_ATTR_INFO_USERID = 1281
+    SQL_ATTR_INFO_WRKSTNNAME = 1282
+    SQL_ATTR_QUERY_TIMEOUT = 0
+    SQL_ATTR_ROWCOUNT_PREFETCH = 2592
+    SQL_ATTR_TRUSTED_CONTEXT_PASSWORD = 2563
+    SQL_ATTR_TRUSTED_CONTEXT_USERID = 2562
+    SQL_ATTR_USE_TRUSTED_CONTEXT = 2561
+    SQL_AUTOCOMMIT_OFF = 0
+    SQL_AUTOCOMMIT_ON = 1
+    SQL_BIGINT = -5
+    SQL_BINARY = -2
+    SQL_BIT = -7
+    SQL_BLOB = -98
+    SQL_BLOB_LOCATOR = 31
+    SQL_CHAR = 1
+    SQL_CLOB = -99
+    SQL_CLOB_LOCATOR = 41
+    SQL_CURSOR_DYNAMIC = 2
+    SQL_CURSOR_FORWARD_ONLY = 0
+    SQL_CURSOR_KEYSET_DRIVEN = 1
+    SQL_CURSOR_STATIC = 3
+    SQL_DBCLOB = -350
+    SQL_DBCLOB_LOCATOR = -351
+    SQL_DBMS_NAME = 17
+    SQL_DBMS_VER = 18
+    SQL_DECFLOAT = -360
+    SQL_DECIMAL = 3
+    SQL_DOUBLE = 8
+    SQL_FALSE = 0
+    SQL_FLOAT = 6
+    SQL_GRAPHIC = -95
+    SQL_INDEX_CLUSTERED = 1
+    SQL_INDEX_OTHER = 3
+    SQL_INTEGER = 4
+    SQL_LONGVARBINARY = -4
+    SQL_LONGVARCHAR = -1
+    SQL_LONGVARGRAPHIC = -97
+    SQL_NUMERIC = 2
+    SQL_PARAM_INPUT = 1
+    SQL_PARAM_INPUT_OUTPUT = 2
+    SQL_PARAM_OUTPUT = 4
+    SQL_REAL = 7
+    SQL_ROWCOUNT_PREFETCH_OFF = 0
+    SQL_ROWCOUNT_PREFETCH_ON = 1
+    SQL_SMALLINT = 5
+    SQL_TABLE_STAT = 0
+    SQL_TINYINT = -6
+    SQL_TRUE = 1
+    SQL_TYPE_DATE = 91
+    SQL_TYPE_TIME = 92
+    SQL_TYPE_TIMESTAMP = 93
+    SQL_VARBINARY = -3
+    SQL_VARCHAR = 12
+    SQL_VARGRAPHIC = -96
+    SQL_WCHAR = -8
+    SQL_WLONGVARCHAR = -10
+    SQL_WVARCHAR = -9
+    SQL_XML = -370
+    USE_WCHAR = 100
+    WCHAR_NO = 0
+    WCHAR_YES = 1
+
+VERSION
+    3.0.1
+
+FILE
+    c:\program files\python37\lib\site-packages\ibm_db_dlls\ibm_db.dll

@@ -1,0 +1,759 @@
+Changed database context to 'master'.
+17 percent processed.
+26 percent processed.
+35 percent processed.
+43 percent processed.
+52 percent processed.
+61 percent processed.
+70 percent processed.
+87 percent processed.
+96 percent processed.
+Processed 1456 pages for database 'DefaultPowerPivotServiceApplicationDB-923e7b9c-7bd0-4b2d-b9a3-4a0146ef77d3', file 'DefaultPowerPivotServiceApplicationDB-923e7b9c-7bd0-4b2d-b9a3-4a0146ef77d3' on file 1.
+100 percent processed.
+Processed 2 pages for database 'DefaultPowerPivotServiceApplicationDB-923e7b9c-7bd0-4b2d-b9a3-4a0146ef77d3', file 'DefaultPowerPivotServiceApplicationDB-923e7b9c-7bd0-4b2d-b9a3-4a0146ef77d3_log' on file 1.
+BACKUP DATABASE successfully processed 1458 pages in 0.048 seconds (237.233 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'DefaultPowerPivotServiceApplicationDB-923e7b9c-7bd0-4b2d-b9a3-4a0146ef77d3', file 'DefaultPowerPivotServiceApplicationDB-923e7b9c-7bd0-4b2d-b9a3-4a0146ef77d3_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.002 seconds (8.300 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 446600 pages for database 'FIMSynchronizationService', file 'FIMSynchronizationService' on file 1.
+100 percent processed.
+Processed 385 pages for database 'FIMSynchronizationService', file 'FIMSynchronizationService_log' on file 1.
+BACKUP DATABASE successfully processed 446985 pages in 7.578 seconds (460.816 MB/sec).
+37 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 339 pages for database 'FIMSynchronizationService', file 'FIMSynchronizationService_log' on file 1.
+BACKUP LOG successfully processed 339 pages in 0.019 seconds (139.160 MB/sec).
+10 percent processed.
+21 percent processed.
+32 percent processed.
+42 percent processed.
+53 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 2376 pages for database 'NW2016DB_Config', file 'NW2013DB_Config' on file 1.
+100 percent processed.
+Processed 9 pages for database 'NW2016DB_Config', file 'NW2013DB_Config_log' on file 1.
+BACKUP DATABASE successfully processed 2385 pages in 0.295 seconds (63.153 MB/sec).
+100 percent processed.
+Processed 10 pages for database 'NW2016DB_Config', file 'NW2013DB_Config_log' on file 1.
+BACKUP LOG successfully processed 10 pages in 0.008 seconds (8.972 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 82624 pages for database 'NW2016DB_Content', file 'NW2013DB_Content' on file 1.
+100 percent processed.
+Processed 194 pages for database 'NW2016DB_Content', file 'NW2013DB_Content_log' on file 1.
+BACKUP DATABASE successfully processed 82818 pages in 1.243 seconds (520.525 MB/sec).
+65 percent processed.
+100 percent processed.
+Processed 195 pages for database 'NW2016DB_Content', file 'NW2013DB_Content_log' on file 1.
+BACKUP LOG successfully processed 195 pages in 0.016 seconds (94.848 MB/sec).
+14 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+54 percent processed.
+64 percent processed.
+74 percent processed.
+84 percent processed.
+94 percent processed.
+Processed 2576 pages for database 'NW2016DB_Forms', file 'NintexForms' on file 1.
+100 percent processed.
+Processed 2 pages for database 'NW2016DB_Forms', file 'NintexForms_log' on file 1.
+BACKUP DATABASE successfully processed 2578 pages in 0.087 seconds (231.467 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'NW2016DB_Forms', file 'NintexForms_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.003 seconds (5.533 MB/sec).
+11 percent processed.
+22 percent processed.
+33 percent processed.
+44 percent processed.
+55 percent processed.
+66 percent processed.
+77 percent processed.
+88 percent processed.
+99 percent processed.
+Processed 1152 pages for database 'NW2016DB_Temp', file 'NW2016DB_Temp' on file 1.
+100 percent processed.
+Processed 2 pages for database 'NW2016DB_Temp', file 'NW2016DB_Temp_log' on file 1.
+BACKUP DATABASE successfully processed 1154 pages in 0.094 seconds (95.874 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'NW2016DB_Temp', file 'NW2016DB_Temp_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.002 seconds (8.056 MB/sec).
+11 percent processed.
+21 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+91 percent processed.
+Processed 568 pages for database 'SP16PRD_App_Management', file 'SP16PRD_App_Management' on file 1.
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_App_Management', file 'SP16PRD_App_Management_log' on file 1.
+BACKUP DATABASE successfully processed 571 pages in 0.031 seconds (143.885 MB/sec).
+100 percent processed.
+Processed 4 pages for database 'SP16PRD_App_Management', file 'SP16PRD_App_Management_log' on file 1.
+BACKUP LOG successfully processed 4 pages in 0.002 seconds (11.962 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+Processed 80328 pages for database 'SP16PRD_Config', file 'SP16PRD_Config' on file 1.
+90 percent processed.
+100 percent processed.
+Processed 18907 pages for database 'SP16PRD_Config', file 'SP16PRD_Config_log' on file 1.
+BACKUP DATABASE successfully processed 99235 pages in 2.372 seconds (326.841 MB/sec).
+11 percent processed.
+20 percent processed.
+31 percent processed.
+41 percent processed.
+50 percent processed.
+60 percent processed.
+71 percent processed.
+81 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 7983 pages for database 'SP16PRD_Config', file 'SP16PRD_Config_log' on file 1.
+BACKUP LOG successfully processed 7983 pages in 0.226 seconds (275.948 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 663840 pages for database 'SP16PRD_Content_Applications', file 'SP16PRD_Content_Applications' on file 1.
+100 percent processed.
+Processed 1799 pages for database 'SP16PRD_Content_Applications', file 'SP16PRD_Content_Applications_log' on file 1.
+BACKUP DATABASE successfully processed 665639 pages in 12.444 seconds (417.896 MB/sec).
+13 percent processed.
+20 percent processed.
+34 percent processed.
+40 percent processed.
+54 percent processed.
+61 percent processed.
+70 percent processed.
+80 percent processed.
+95 percent processed.
+100 percent processed.
+Processed 1799 pages for database 'SP16PRD_Content_Applications', file 'SP16PRD_Content_Applications_log' on file 1.
+BACKUP LOG successfully processed 1799 pages in 0.098 seconds (143.390 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 88264 pages for database 'SP16PRD_Content_BusinessRules', file 'SP16PRD_Content_BusinessRules' on file 1.
+100 percent processed.
+Processed 320 pages for database 'SP16PRD_Content_BusinessRules', file 'SP16PRD_Content_BusinessRules_log' on file 1.
+BACKUP DATABASE successfully processed 88584 pages in 1.946 seconds (355.632 MB/sec).
+39 percent processed.
+42 percent processed.
+82 percent processed.
+100 percent processed.
+Processed 321 pages for database 'SP16PRD_Content_BusinessRules', file 'SP16PRD_Content_BusinessRules_log' on file 1.
+BACKUP LOG successfully processed 321 pages in 0.021 seconds (119.140 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 65552 pages for database 'SP16PRD_Content_CentralAdmin', file 'SP16PRD_Content_CentralAdmin' on file 1.
+100 percent processed.
+Processed 681 pages for database 'SP16PRD_Content_CentralAdmin', file 'SP16PRD_Content_CentralAdmin_log' on file 1.
+BACKUP DATABASE successfully processed 66233 pages in 1.111 seconds (465.742 MB/sec).
+37 percent processed.
+68 percent processed.
+100 percent processed.
+Processed 339 pages for database 'SP16PRD_Content_CentralAdmin', file 'SP16PRD_Content_CentralAdmin_log' on file 1.
+BACKUP LOG successfully processed 339 pages in 0.017 seconds (155.732 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 345184 pages for database 'SP16PRD_Content_Community', file 'SP16PRD_Content_Community' on file 1.
+100 percent processed.
+Processed 393 pages for database 'SP16PRD_Content_Community', file 'SP16PRD_Content_Community_log' on file 1.
+BACKUP DATABASE successfully processed 345577 pages in 8.430 seconds (320.262 MB/sec).
+32 percent processed.
+65 percent processed.
+97 percent processed.
+100 percent processed.
+Processed 394 pages for database 'SP16PRD_Content_Community', file 'SP16PRD_Content_Community_log' on file 1.
+BACKUP LOG successfully processed 394 pages in 0.021 seconds (146.251 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 4151200 pages for database 'SP16PRD_Content_Community_00', file 'SP16PRD_Content_Community_00' on file 1.
+100 percent processed.
+Processed 10798 pages for database 'SP16PRD_Content_Community_00', file 'SP16PRD_Content_Community_00_log' on file 1.
+BACKUP DATABASE successfully processed 4161998 pages in 94.689 seconds (343.393 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+61 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 10799 pages for database 'SP16PRD_Content_Community_00', file 'SP16PRD_Content_Community_00_log' on file 1.
+BACKUP LOG successfully processed 10799 pages in 0.405 seconds (208.304 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 277288 pages for database 'SP16PRD_Content_Community_01', file 'SP16PRD_Content_Community_01' on file 1.
+100 percent processed.
+Processed 2335 pages for database 'SP16PRD_Content_Community_01', file 'SP16PRD_Content_Community_01_log' on file 1.
+BACKUP DATABASE successfully processed 279623 pages in 7.476 seconds (292.208 MB/sec).
+15 percent processed.
+20 percent processed.
+31 percent processed.
+42 percent processed.
+53 percent processed.
+64 percent processed.
+75 percent processed.
+80 percent processed.
+91 percent processed.
+100 percent processed.
+Processed 2335 pages for database 'SP16PRD_Content_Community_01', file 'SP16PRD_Content_Community_01_log' on file 1.
+BACKUP LOG successfully processed 2335 pages in 0.096 seconds (190.002 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 227664 pages for database 'SP16PRD_Content_Community_02', file 'SP16PRD_Content_Community_02' on file 1.
+100 percent processed.
+Processed 340 pages for database 'SP16PRD_Content_Community_02', file 'SP16PRD_Content_Community_02_log' on file 1.
+BACKUP DATABASE successfully processed 228004 pages in 6.897 seconds (258.268 MB/sec).
+37 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 341 pages for database 'SP16PRD_Content_Community_02', file 'SP16PRD_Content_Community_02_log' on file 1.
+BACKUP LOG successfully processed 341 pages in 0.016 seconds (166.076 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 1177128 pages for database 'SP16PRD_Content_Community_03', file 'SP16PRD_Content_Community_03' on file 1.
+100 percent processed.
+Processed 1114 pages for database 'SP16PRD_Content_Community_03', file 'SP16PRD_Content_Community_03_log' on file 1.
+BACKUP DATABASE successfully processed 1178242 pages in 44.630 seconds (206.251 MB/sec).
+11 percent processed.
+22 percent processed.
+33 percent processed.
+44 percent processed.
+56 percent processed.
+66 percent processed.
+78 percent processed.
+89 percent processed.
+100 percent processed.
+Processed 1114 pages for database 'SP16PRD_Content_Community_03', file 'SP16PRD_Content_Community_03_log' on file 1.
+BACKUP LOG successfully processed 1114 pages in 0.081 seconds (107.433 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 234952 pages for database 'SP16PRD_Content_Community_04', file 'SP16PRD_Content_Community_04' on file 1.
+100 percent processed.
+Processed 745 pages for database 'SP16PRD_Content_Community_04', file 'SP16PRD_Content_Community_04_log' on file 1.
+BACKUP DATABASE successfully processed 235697 pages in 7.771 seconds (236.955 MB/sec).
+17 percent processed.
+34 percent processed.
+51 percent processed.
+68 percent processed.
+85 percent processed.
+100 percent processed.
+Processed 746 pages for database 'SP16PRD_Content_Community_04', file 'SP16PRD_Content_Community_04_log' on file 1.
+BACKUP LOG successfully processed 746 pages in 0.047 seconds (123.857 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 62208 pages for database 'SP16PRD_Content_Community_05', file 'SP16PRD_Content_Community_05' on file 1.
+100 percent processed.
+Processed 663 pages for database 'SP16PRD_Content_Community_05', file 'SP16PRD_Content_Community_05_log' on file 1.
+BACKUP DATABASE successfully processed 62871 pages in 1.906 seconds (257.699 MB/sec).
+19 percent processed.
+24 percent processed.
+43 percent processed.
+62 percent processed.
+82 percent processed.
+100 percent processed.
+Processed 663 pages for database 'SP16PRD_Content_Community_05', file 'SP16PRD_Content_Community_05_log' on file 1.
+BACKUP LOG successfully processed 663 pages in 0.043 seconds (120.457 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 131008 pages for database 'SP16PRD_Content_CorpLibrary', file 'SP16PRD_Content_CorpLibrary' on file 1.
+100 percent processed.
+Processed 194 pages for database 'SP16PRD_Content_CorpLibrary', file 'SP16PRD_Content_CorpLibrary_log' on file 1.
+BACKUP DATABASE successfully processed 131202 pages in 5.842 seconds (175.455 MB/sec).
+66 percent processed.
+100 percent processed.
+Processed 194 pages for database 'SP16PRD_Content_CorpLibrary', file 'SP16PRD_Content_CorpLibrary_log' on file 1.
+BACKUP LOG successfully processed 194 pages in 0.013 seconds (116.361 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 783800 pages for database 'SP16PRD_Content_CorpMediaLibrary', file 'SP16PRD_Content_CorpMediaLibrary' on file 1.
+100 percent processed.
+Processed 457 pages for database 'SP16PRD_Content_CorpMediaLibrary', file 'SP16PRD_Content_CorpMediaLibrary_log' on file 1.
+BACKUP DATABASE successfully processed 784257 pages in 27.054 seconds (226.473 MB/sec).
+27 percent processed.
+55 percent processed.
+83 percent processed.
+96 percent processed.
+100 percent processed.
+Processed 458 pages for database 'SP16PRD_Content_CorpMediaLibrary', file 'SP16PRD_Content_CorpMediaLibrary_log' on file 1.
+BACKUP LOG successfully processed 458 pages in 0.021 seconds (170.200 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 562800 pages for database 'SP16PRD_Content_DigitalWorkplace', file 'SP16PRD_Content_DigitalWorkplace' on file 1.
+100 percent processed.
+Processed 1423 pages for database 'SP16PRD_Content_DigitalWorkplace', file 'SP16PRD_Content_DigitalWorkplace_log' on file 1.
+BACKUP DATABASE successfully processed 564223 pages in 23.893 seconds (184.488 MB/sec).
+15 percent processed.
+24 percent processed.
+33 percent processed.
+42 percent processed.
+51 percent processed.
+60 percent processed.
+78 percent processed.
+87 percent processed.
+96 percent processed.
+100 percent processed.
+Processed 1423 pages for database 'SP16PRD_Content_DigitalWorkplace', file 'SP16PRD_Content_DigitalWorkplace_log' on file 1.
+BACKUP LOG successfully processed 1423 pages in 0.199 seconds (55.865 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 1763344 pages for database 'SP16PRD_Content_MyPulse', file 'SP16PRD_Content_MyPulse' on file 1.
+100 percent processed.
+Processed 27205 pages for database 'SP16PRD_Content_MyPulse', file 'SP16PRD_Content_MyPulse_log' on file 1.
+BACKUP DATABASE successfully processed 1790549 pages in 54.984 seconds (254.413 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 27206 pages for database 'SP16PRD_Content_MyPulse', file 'SP16PRD_Content_MyPulse_log' on file 1.
+BACKUP LOG successfully processed 27206 pages in 1.088 seconds (195.349 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 1232136 pages for database 'SP16PRD_Content_Projects', file 'DWPSP13_DW_Projects' on file 1.
+100 percent processed.
+Processed 635 pages for database 'SP16PRD_Content_Projects', file 'DWPSP13_DW_Projects_log' on file 1.
+BACKUP DATABASE successfully processed 1232771 pages in 34.908 seconds (275.897 MB/sec).
+20 percent processed.
+40 percent processed.
+60 percent processed.
+80 percent processed.
+100 percent processed.
+Processed 635 pages for database 'SP16PRD_Content_Projects', file 'DWPSP13_DW_Projects_log' on file 1.
+BACKUP LOG successfully processed 635 pages in 0.027 seconds (183.629 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 14032 pages for database 'SP16PRD_Content_Search', file 'SP16PRD_Content_Search' on file 1.
+100 percent processed.
+Processed 294 pages for database 'SP16PRD_Content_Search', file 'SP16PRD_Content_Search_log' on file 1.
+BACKUP DATABASE successfully processed 14326 pages in 0.346 seconds (323.459 MB/sec).
+100 percent processed.
+Processed 94 pages for database 'SP16PRD_Content_Search', file 'SP16PRD_Content_Search_log' on file 1.
+BACKUP LOG successfully processed 94 pages in 0.009 seconds (80.891 MB/sec).
+12 percent processed.
+20 percent processed.
+33 percent processed.
+41 percent processed.
+50 percent processed.
+61 percent processed.
+70 percent processed.
+82 percent processed.
+90 percent processed.
+Processed 3040 pages for database 'SP16PRD_MetaData', file 'SP13PROD_MetaData' on file 1.
+100 percent processed.
+Processed 9 pages for database 'SP16PRD_MetaData', file 'SP13PROD_MetaData_log' on file 1.
+BACKUP DATABASE successfully processed 3049 pages in 0.103 seconds (231.227 MB/sec).
+100 percent processed.
+Processed 9 pages for database 'SP16PRD_MetaData', file 'SP13PROD_MetaData_log' on file 1.
+BACKUP LOG successfully processed 9 pages in 0.005 seconds (14.062 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 12584 pages for database 'SP16PRD_Profile', file 'SP13PROD_Profile' on file 1.
+100 percent processed.
+Processed 638 pages for database 'SP16PRD_Profile', file 'SP13PROD_Profile_log' on file 1.
+BACKUP DATABASE successfully processed 13222 pages in 0.484 seconds (213.410 MB/sec).
+20 percent processed.
+40 percent processed.
+60 percent processed.
+80 percent processed.
+100 percent processed.
+Processed 638 pages for database 'SP16PRD_Profile', file 'SP13PROD_Profile_log' on file 1.
+BACKUP LOG successfully processed 638 pages in 0.027 seconds (184.516 MB/sec).
+10 percent processed.
+21 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+71 percent processed.
+80 percent processed.
+91 percent processed.
+Processed 9232 pages for database 'SP16PRD_Search', file 'SP16PRD_Search' on file 1.
+100 percent processed.
+Processed 461 pages for database 'SP16PRD_Search', file 'SP16PRD_Search_log' on file 1.
+BACKUP DATABASE successfully processed 9693 pages in 0.216 seconds (350.572 MB/sec).
+100 percent processed.
+Processed 74 pages for database 'SP16PRD_Search', file 'SP16PRD_Search_log' on file 1.
+BACKUP LOG successfully processed 74 pages in 0.008 seconds (71.533 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+90 percent processed.
+Processed 6584 pages for database 'SP16PRD_Search_AnalyticsReportingStore', file 'SP16PRD_Search_AnalyticsReportingStore' on file 1.
+100 percent processed.
+Processed 17 pages for database 'SP16PRD_Search_AnalyticsReportingStore', file 'SP16PRD_Search_AnalyticsReportingStore_log' on file 1.
+BACKUP DATABASE successfully processed 6601 pages in 0.247 seconds (208.764 MB/sec).
+100 percent processed.
+Processed 17 pages for database 'SP16PRD_Search_AnalyticsReportingStore', file 'SP16PRD_Search_AnalyticsReportingStore_log' on file 1.
+BACKUP LOG successfully processed 17 pages in 0.004 seconds (32.958 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+Processed 93400 pages for database 'SP16PRD_Search_CrawlStore', file 'SP16PRD_Search_CrawlStore' on file 1.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 82285 pages for database 'SP16PRD_Search_CrawlStore', file 'SP16PRD_Search_CrawlStore_log' on file 1.
+BACKUP DATABASE successfully processed 175685 pages in 5.680 seconds (241.644 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 82286 pages for database 'SP16PRD_Search_CrawlStore', file 'SP16PRD_Search_CrawlStore_log' on file 1.
+BACKUP LOG successfully processed 82286 pages in 2.270 seconds (283.196 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 125088 pages for database 'SP16PRD_Search_LinksStore', file 'SP16PRD_Search_LinksStore' on file 1.
+100 percent processed.
+Processed 3824 pages for database 'SP16PRD_Search_LinksStore', file 'SP16PRD_Search_LinksStore_log' on file 1.
+BACKUP DATABASE successfully processed 128912 pages in 2.989 seconds (336.943 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 3825 pages for database 'SP16PRD_Search_LinksStore', file 'SP16PRD_Search_LinksStore_log' on file 1.
+BACKUP LOG successfully processed 3825 pages in 0.119 seconds (251.087 MB/sec).
+10 percent processed.
+20 percent processed.
+31 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+71 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 616 pages for database 'SP16PRD_SecureStore', file 'SP16PRD_SecureStore' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_SecureStore', file 'SP16PRD_SecureStore_log' on file 1.
+BACKUP DATABASE successfully processed 618 pages in 0.025 seconds (192.988 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_SecureStore', file 'SP16PRD_SecureStore_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.003 seconds (5.371 MB/sec).
+20 percent processed.
+41 percent processed.
+62 percent processed.
+83 percent processed.
+97 percent processed.
+Processed 608 pages for database 'SP16PRD_Social', file 'SP13PROD_Social' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_Social', file 'SP13PROD_Social_log' on file 1.
+BACKUP DATABASE successfully processed 610 pages in 0.033 seconds (144.324 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_Social', file 'SP13PROD_Social_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.003 seconds (5.533 MB/sec).
+11 percent processed.
+21 percent processed.
+30 percent processed.
+40 percent processed.
+51 percent processed.
+61 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 416 pages for database 'SP16PRD_StateService', file 'SP16PRD_StateService' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_StateService', file 'SP16PRD_StateService_log' on file 1.
+BACKUP DATABASE successfully processed 418 pages in 0.028 seconds (116.507 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_StateService', file 'SP16PRD_StateService_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.002 seconds (8.056 MB/sec).
+11 percent processed.
+20 percent processed.
+31 percent processed.
+40 percent processed.
+51 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+90 percent processed.
+Processed 432 pages for database 'SP16PRD_SubscriptionSettings', file 'SP16PRD_SubscriptionSettings' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_SubscriptionSettings', file 'SP16PRD_SubscriptionSettings_log' on file 1.
+BACKUP DATABASE successfully processed 434 pages in 0.027 seconds (125.452 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_SubscriptionSettings', file 'SP16PRD_SubscriptionSettings_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.002 seconds (8.300 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 163160 pages for database 'SP16PRD_Sync', file 'SP13PROD_Sync' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_Sync', file 'SP13PROD_Sync_log' on file 1.
+BACKUP DATABASE successfully processed 163162 pages in 3.012 seconds (423.207 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_Sync', file 'SP13PROD_Sync_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.008 seconds (2.075 MB/sec).
+11 percent processed.
+20 percent processed.
+31 percent processed.
+40 percent processed.
+51 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+90 percent processed.
+Processed 432 pages for database 'SP16PRD_TranslationService', file 'SP16PRD_TranslationService' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_TranslationService', file 'SP16PRD_TranslationService_log' on file 1.
+BACKUP DATABASE successfully processed 434 pages in 0.056 seconds (60.485 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_TranslationService', file 'SP16PRD_TranslationService_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.003 seconds (5.533 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 1562264 pages for database 'SP16PRD_UsageAndHealth', file 'SP16PRD_UsageAndHealth' on file 1.
+100 percent processed.
+Processed 7117 pages for database 'SP16PRD_UsageAndHealth', file 'SP16PRD_UsageAndHealth_log' on file 1.
+BACKUP DATABASE successfully processed 1569381 pages in 34.697 seconds (353.367 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 1566384 pages for database 'SP16PRD_UsageAndHealth', file 'SP16PRD_UsageAndHealth' on file 1.
+100 percent processed.
+Processed 7159 pages for database 'SP16PRD_UsageAndHealth', file 'SP16PRD_UsageAndHealth_log' on file 1.
+BACKUP DATABASE successfully processed 1573543 pages in 33.668 seconds (365.133 MB/sec).
+10 percent processed.
+20 percent processed.
+31 percent processed.
+40 percent processed.
+51 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 7160 pages for database 'SP16PRD_UsageAndHealth', file 'SP16PRD_UsageAndHealth_log' on file 1.
+BACKUP LOG successfully processed 7160 pages in 0.186 seconds (300.702 MB/sec).
+10 percent processed.
+21 percent processed.
+30 percent processed.
+40 percent processed.
+51 percent processed.
+60 percent processed.
+71 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 448 pages for database 'SP16PRD_WordAutomation', file 'SP16PRD_WordAutomation' on file 1.
+100 percent processed.
+Processed 2 pages for database 'SP16PRD_WordAutomation', file 'SP16PRD_WordAutomation_log' on file 1.
+BACKUP DATABASE successfully processed 450 pages in 0.035 seconds (100.362 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'SP16PRD_WordAutomation', file 'SP16PRD_WordAutomation_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.003 seconds (5.696 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+Processed 95856 pages for database 'tpcc', file 'tpcc' on file 1.
+100 percent processed.
+Processed 2 pages for database 'tpcc', file 'tpcc_log' on file 1.
+BACKUP DATABASE successfully processed 95858 pages in 3.348 seconds (223.682 MB/sec).
+100 percent processed.
+Processed 3 pages for database 'tpcc', file 'tpcc_log' on file 1.
+BACKUP LOG successfully processed 3 pages in 0.005 seconds (3.320 MB/sec).
