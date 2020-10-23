@@ -1,5 +1,16 @@
 -- catalog SYSC mainframe connections
 
+-- BDB2 - De-identification
+uncatalog dcs db HBFBDB2;
+uncatalog db HBFBDB2;
+uncatalog system odbc data source HBFBDB2;
+uncatalog node HBFBDB2;
+
+catalog tcpip node HBFBDB2 remote SYSC.DEV.HBF.COM.AU server 496 system SYSC ostype os390;
+catalog dcs db HBFBDB2 as HBFBDB2;
+catalog db HBFBDB2 as HBFBDB2 at node HBFBDB2 authentication server;
+catalog system odbc data source HBFBDB2;
+
 -- TDB2
 uncatalog dcs db HBFTDB2;
 uncatalog db HBFTDB2;

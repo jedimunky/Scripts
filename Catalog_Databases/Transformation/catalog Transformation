@@ -1,0 +1,51 @@
+-- AWS interface
+uncatalog db DB_AWSP;
+uncatalog system odbc data source DB_AWSP;
+uncatalog node DB2AWS;
+
+catalog tcpip node DB2AWS remote HPVUDBAWSTZ1.corp.hbf.com.au server 50000 remote_instance DB2AWS system HPVUDBAWSTZ1 ostype win;
+catalog db DB_AWSP as DB_AWSP at node DB2AWS authentication SERVER;
+catalog system odbc data source DB_AWSP;
+
+-- Migration
+uncatalog db DB_MIGR;
+uncatalog system odbc data source DB_MIGR;
+uncatalog node DB2MIGR;
+
+catalog tcpip node DB2MIGR remote HPVUDBAWSTZ1.corp.hbf.com.au server 50002 remote_instance DB2MIGR system HPVUDBAWSTZ1 ostype win;
+catalog db DB_MIGR as DB_MIGR at node DB2MIGR authentication SERVER;
+catalog system odbc data source DB_MIGR;
+
+-- Siebel
+uncatalog db SIEBMIGR;
+uncatalog system odbc data source SIEBMIGR;
+uncatalog node DB2MIGR;
+
+catalog tcpip node DB2SIEBM remote HPVUDBMRMDATAM1.corp.hbf.com.au server 50000 remote_instance DB2SIEB system HPVUDBMRMDATAM1 ostype win;
+catalog db SIEBMIGR as SIEBMIGR at node DB2SIEBM authentication SERVER;
+catalog system odbc data source SIEBMIGR;
+
+-- De-Identification
+-- Siebel
+uncatalog db SIEBGMC;
+uncatalog system odbc data source SIEBGMC;
+uncatalog node DB2SIEBG;
+
+catalog tcpip node DB2SIEBG remote HPVUDBMRMDATAM1.corp.hbf.com.au server 50002 remote_instance DB2SIEG system HPVUDBMRMDATAM1 ostype win;
+catalog db SIEBGMC as SIEBGMC at node DB2SIEBG authentication SERVER;
+catalog system odbc data source SIEBGMC;
+
+-- Tibco
+uncatalog db DB_GMCEA;
+uncatalog db DB_GMCSM;
+uncatalog system odbc data source DB_GMCEA;
+uncatalog system odbc data source DB_GMCSM;
+uncatalog node DB2TIBG;
+
+catalog tcpip node DB2TIBG remote htvudbtibweb1.dev.hbf.com.au server 50018 remote_instance DB2TIBG system htvudbtibweb1 ostype win;
+catalog db DB_GMCEA as DB_GMCEA at node DB2TIBG;
+catalog db DB_GMCSM as DB_GMCSM at node DB2TIBG;
+catalog system odbc data source DB_GMCEA;
+catalog system odbc data source DB_GMCSM;
+
+terminate;

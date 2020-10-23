@@ -1,0 +1,7 @@
+BACKUP DATABASE [jiraProd] TO  DISK = N'G:\SQLBackups\MSSQL13.MSSQLSERVER\jiraProd\jiraProd_backup_2020_10_07_190000.bak' WITH NOFORMAT, NOINIT,  
+  NAME = N'jiraProd-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO
+
+BACKUP DATABASE [jiraProd_B] TO  DISK = N'G:\SQLBackups\MSSQL13.MSSQLSERVER\jiraProd_B\jiraProd_B_backup_2020_10_07_190000.bak' WITH NOFORMAT, NOINIT,  
+  NAME = N'jiraProd_B-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO

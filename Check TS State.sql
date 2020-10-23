@@ -1,7 +1,7 @@
-SELECT varchar (tbsp_name, 30) AS tbsp_name,
-       member,
-       tbsp_type,
+SELECT VARCHAR (TBSP_NAME, 30) AS TBSP_NAME,
+       MEMBER,
+       TBSP_TYPE,
        TBSP_STATE
-  FROM TABLE (MON_GET_TABLESPACE ('', -2)) AS t
- WHERE TBSP_STATE <> 'NORMAL'
-ORDER BY tbsp_name
+FROM TABLE (MON_GET_TABLESPACE ('', -2)) AS T
+WHERE TBSP_STATE <> 'NORMAL'
+ORDER BY TBSP_NAME

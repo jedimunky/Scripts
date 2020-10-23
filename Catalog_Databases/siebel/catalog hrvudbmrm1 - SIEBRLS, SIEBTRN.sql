@@ -14,7 +14,7 @@ uncatalog db SIEBTRN;
 uncatalog system odbc data source SIEBTRN;
 uncatalog node DB2SIEBT;
 
-catalog tcpip node DB2SIEBT remote hrvudbmrm3.corp.hbf.com.au server 50002 remote_instance DB2SIEBT system hrvudbmrm3 ostype win;
+catalog tcpip node DB2SIEBT remote hrvudbmrm1.corp.hbf.com.au server 50002 remote_instance DB2SIEBT system hrvudbmrm1 ostype win;
 catalog db SIEBTRN as SIEBTRN at node DB2SIEBT;
 catalog system odbc data source SIEBTRN;
 

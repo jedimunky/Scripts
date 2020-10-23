@@ -118,6 +118,8 @@ $logpath     = "F:\db2_archive_logs"
 $Arguments   = "-S netbackup.corp.hbf.com.au -p HO_" + $locale + "_DB2_WINFS -s $schedule $logpath"
 $StartBackup = "D:\Program Files\VERITAS\NetBackup\bin\bpbackup.exe"
 
+# D:\Program Files\VERITAS\NetBackup\bin\bpbackup.exe -S netbackup.corp.hbf.com.au -p HO_DEV_DB2_WINFS -s HO_DEV_USER_BACKUP_DAILY F:\db2_archive_logs
+
 Start-Process -FilePath $StartBackup -ArgumentList $Arguments
 
 # Delete old backups and logs
